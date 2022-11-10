@@ -2,8 +2,21 @@
     background-color: #efdecd;
 }
 
-a {
-    padding: 8px;
+#logo-nav {
+    font-family: 'Carter One', cursive;
+}
+
+#logo{
+    font-family: 'Carter One', cursive;
+    text-align: center;
+}
+
+body {
+    background-image: url(https://res.cloudinary.com/djmk0qtgj/image/upload/v1668054415/thought-catalog-o0Qqw21-0NI-unsplash_1_dzrcmi.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
 }
 
 footer {
