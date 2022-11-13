@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from devbooksapp.views import get_base_page
+from devbooksapp.views import get_home_page, get_finance_categorie_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', get_base_page, name='get_base_page'),
+    path('', get_home_page, name='get_home_page'),
+    path('finance/', get_finance_categorie_page, name='get_finance_categorie_page')
 ]
