@@ -3,98 +3,137 @@
 {% block content %}
 
 
-<div class="container py-5">
-  <div class="row text-center mb-5">
-    <div class="col-lg-7 mx-auto">
-      <h1 class="display-4" id="logo">Top 5 Finance Books</h1>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-8 mx-auto">
-      <!-- List group-->
-      <ul class="list-group shadow">
-        <!-- list group item-->
-        <li class="list-group-item">
-          <!-- Custom content-->
-          <div class="media align-items-lg-center flex-column flex-lg-row p-3">
-            <div class="media-body order-2 order-lg-1">
-              <h5 class="mt-0 font-weight-bold mb-2">1-Rich Dad Poor Dad</h5>
-              <p class="font-italic text-muted mb-0 small">Rich Dad Poor Dad is a 1997 book written by Robert T.
-                Kiyosaki and Sharon Lechter. It advocates the importance
-                of financial literacy (financial education), financial independence and building wealth through
-                investing in
-                assets, real estate investing, starting and owning businesses, as well as increasing one's financial
-                intelligence (financial IQ).
 
-                Rich Dad Poor Dad is written in the style of a set of parables, ostensibly based on Kiyosaki's life.[1]
-                The
-                titular "rich dad" is his friend's father who accumulated wealth due to entrepreneurship and savvy
-                investing,
-                while the "poor dad" is claimed to be Kiyosaki's own father who he says worked hard all his life but
-                never
-                obtained financial security.</p>
-              <div class="d-flex align-items-center justify-content-between mt-1">
-                <div class="row justify-content-md-center m-0">
-
-                  <div class="btn"><i class="fa-regular fa-heart"></i></div>
-                  <div class="btn">Buy</div>
-                  <div class="btn">fav</div>
-                  <div class="btn">comments</div>
-
-
-                </div>
-
-              </div>
-            </div><img
-              src="https://res.cloudinary.com/djmk0qtgj/image/upload/c_scale,q_100,r_0,w_166/v1668350852/rich-dad-poor-dad_feajxj.jpg"
-              alt="Risch dad poor dad book image" width="200" class="ml-lg-5 order-1 order-lg-2 mx-auto d-block">
-          </div> <!-- End -->
-        </li> <!-- End -->
-        <!-- list group item-->
-        <li class="list-group-item">
-          <!-- Custom content-->
-          <div class="media align-items-lg-center flex-column flex-lg-row p-3">
-            <div class="media-body order-2 order-lg-1">
-              <h5 class="mt-0 font-weight-bold mb-2">2-Think and Grow Rich</h5>
-              <p class="font-italic text-muted mb-0 small">Think and Grow Rich is a book written by Napoleon Hill in
-                1937 and promoted as a personal development and self-improvement book. He claimed to be inspired by a
-                suggestion from business magnate and later-philanthropist Andrew Carnegie.[1]
-
-                First published during the Great Depression,[2] the book has sold more than 15 million copies[3]
-
-                It remains the biggest seller of Napoleon Hill's books. BusinessWeek magazine's Best-Seller List ranked
-                it the sixth best-selling paperback business book 70 years after it was published.[4] Think and Grow
-                Rich is listed in John C. Maxwell's A Lifetime "Must Read" Books List.[5]
-
-                While the book's title and much of the writing concerns increasing income, the author proclaims that his
-                philosophy can help people succeed in any line of work, to do and be anything they can imagine.[6]
-
-                Think and Grow Rich is based on Hill's earlier work The Law of Success, and is the result of more than
-                twenty years of study of many individuals who had amassed personal fortunes.[2]
-
-                Hill studied their habits and drew some 16 "laws" to be applied to achieve success. Think and Grow Rich
-                condenses them, providing the reader with 14 principles in the form of a "Philosophy of Achievement".[2]
-              </p>
-              <div class="d-flex align-items-center justify-content-between mt-1">
-                <div class="row justify-content-md-center m-0">
-
-                  <div class="btn"><i class="fa-regular fa-heart"></i></div>
-                  <div class="btn">Buy</div>
-                  <div class="btn">fav</div>
-                  <div class="btn">comments</div>
-
-
-                </div>
-
-              </div>
-            </div><img
-              src="https://res.cloudinary.com/djmk0qtgj/image/upload/c_scale,w_200/v1668490815/think-and_-grow-rich-image_zn1utf.jpg"
-              alt="Think and grow rich book image" width="200" class="ml-lg-5 order-1 order-lg-2 mx-auto d-block">
-          </div> <!-- End -->
-        </li> <!-- End -->
-      </ul> <!-- End -->
-    </div>
+<div class="row text-center mb-5">
+  <div class="col-lg-7 mx-auto">
+    <!-- Page title -->
+    <h1 class="display-4" id="logo">Top 5 Finance Books</h1>
   </div>
 </div>
+
+<!-- Top books list -->
+<div class="row">
+  <div class="col-lg-8 mx-auto">
+    <!-- List group -->
+    <ul class="list-group shadow">
+
+      <!-- 1-Rich Dad Poor Dad -->
+      <li class="list-group-item">
+        <!-- Custom content-->
+        <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+          <div class="media-body order-2 order-lg-1">
+            <h5 class="mt-0 font-weight-bold mb-2">1-Rich Dad Poor Dad</h5>
+            <p class="font-italic text-muted mb-0 small">Rich Dad Poor Dad is a 1997 book written by Robert T.
+              Kiyosaki and Sharon Lechter. It advocates the importance
+              of financial literacy (financial education), financial independence and building wealth through
+              investing in
+              assets, real estate investing, starting and owning businesses, as well as increasing one's financial
+              intelligence (financial IQ).
+
+              Rich Dad Poor Dad is written in the style of a set of parables, ostensibly based on Kiyosaki's life.[1]
+              The
+              titular "rich dad" is his friend's father who accumulated wealth due to entrepreneurship and savvy
+              investing,
+              while the "poor dad" is claimed to be Kiyosaki's own father who he says worked hard all his life but
+              never
+              obtained financial security.</p>
+            <div class="d-flex align-items-center justify-content-between mt-1">
+              <div class="row justify-content-md-center m-0">
+
+                <div type="button" class="btn"><i class="fa-regular fa-heart"></i></div>
+                <div type="button" class="btn">Buy</div>
+                <div type="button" class="btn">fav</div>
+                <!-- Book Comments -->
+                <div class="card">
+                  <div class="card" id="headingOne">
+                    <h5 class="mb-0">
+                      <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
+                        aria-controls="collapseOne">
+                        <i class="fa-regular fa-comment"></i> Comments
+                      </button>
+                    </h5>
+                  </div>
+
+                  <div id="collapseOne" class="collapse overflow-auto" aria-labelledby="headingOne"
+                    data-parent="#accordion">
+                    <div class="card-body">
+                      <div class="row">
+                        <div type="button" class="btn mx-auto btn-outline-secondary">Add a comment</div>
+                      </div>
+                      <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                        squid.
+                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
+                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
+                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
+                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
+                        heard
+                        of them accusamus labore sustainable VHS.</p>
+                    </div>
+                    <div class="row">
+                      <div type="button" class="btn mx-auto btn-outline-secondary">Go to the top <i
+                          class="fa-solid fa-up-long"></i></div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+
+              </div>
+
+            </div>
+          </div><img
+            src="https://res.cloudinary.com/djmk0qtgj/image/upload/c_scale,q_100,r_0,w_166/v1668350852/rich-dad-poor-dad_feajxj.jpg"
+            alt="Risch dad poor dad book image" width="200" class="ml-lg-5 order-1 order-lg-2 mx-auto d-block">
+        </div>
+      </li>
+
+      <!-- 2-Think and Grow Rich -->
+      <li class="list-group-item">
+        <!-- Custom content-->
+        <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+          <div class="media-body order-2 order-lg-1">
+            <h5 class="mt-0 font-weight-bold mb-2">2-Think and Grow Rich</h5>
+            <p class="font-italic text-muted mb-0 small">Think and Grow Rich is a book written by Napoleon Hill in
+              1937 and promoted as a personal development and self-improvement book. He claimed to be inspired by a
+              suggestion from business magnate and later-philanthropist Andrew Carnegie.[1]
+
+              First published during the Great Depression,[2] the book has sold more than 15 million copies[3]
+
+              It remains the biggest seller of Napoleon Hill's books. BusinessWeek magazine's Best-Seller List ranked
+              it the sixth best-selling paperback business book 70 years after it was published.[4] Think and Grow
+              Rich is listed in John C. Maxwell's A Lifetime "Must Read" Books List.[5]
+
+              While the book's title and much of the writing concerns increasing income, the author proclaims that his
+              philosophy can help people succeed in any line of work, to do and be anything they can imagine.[6]
+
+              Think and Grow Rich is based on Hill's earlier work The Law of Success, and is the result of more than
+              twenty years of study of many individuals who had amassed personal fortunes.[2]
+
+              Hill studied their habits and drew some 16 "laws" to be applied to achieve success. Think and Grow Rich
+              condenses them, providing the reader with 14 principles in the form of a "Philosophy of Achievement".[2]
+            </p>
+            <div class="d-flex align-items-center justify-content-between mt-1">
+              <div class="row justify-content-md-center m-0">
+
+                <div class="btn"><i class="fa-regular fa-heart"></i></div>
+                <div class="btn">Buy</div>
+                <div class="btn">fav</div>
+                <div class="btn">comments</div>
+
+
+              </div>
+
+            </div>
+          </div><img
+            src="https://res.cloudinary.com/djmk0qtgj/image/upload/c_scale,w_200/v1668490815/think-and_-grow-rich-image_zn1utf.jpg"
+            alt="Think and grow rich book image" width="200" class="ml-lg-5 order-1 order-lg-2 mx-auto d-block">
+        </div> <!-- End -->
+      </li> <!-- End -->
+    </ul> <!-- End -->
+  </div>
+</div>
+
 
 {%endblock%}
