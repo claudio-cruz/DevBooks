@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from django.views import generic
+from .models import Book
 
-def get_home_page(request):
-    return render(request, 'index.html')
 
-def get_finance_categorie_page(request):
-    return render(request, 'finance.html')
+class BookList(generic.ListView):
+    model = Book
+    queryset = Book.objects.filter(status='published').order_by('name')
+    template_name = "finance.html"

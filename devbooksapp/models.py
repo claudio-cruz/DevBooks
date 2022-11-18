@@ -28,6 +28,7 @@ class Book(models.Model):
     favourites = models.ManyToManyField(
         User, related_name='favourite', default=None, blank=True)
     status = models.CharField(max_length=10, choices=options, default='draft')
+
     
     def __str__(self):
         return self.title

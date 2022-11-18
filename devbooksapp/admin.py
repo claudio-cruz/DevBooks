@@ -3,6 +3,9 @@ from . import models
 from django_summernote.admin import SummernoteModelAdmin
 
 
+admin.site.register(models.Category)
+
+
 @admin.register(models.Book)
 class BookAdmin(SummernoteModelAdmin):
 
@@ -12,8 +15,6 @@ class BookAdmin(SummernoteModelAdmin):
     list_filter = ('category', 'author', 'status')
     search_fields = ('title', 'category')
 
-admin.site.register(models.Category)
-
 
 @admin.register(models.Comment)
 class CommentAdmin(admin.ModelAdmin):
@@ -21,4 +22,7 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('name', 'body', 'book', 'created_on', 'approved')
     list_filter = ('approved', 'created_on', 'book', 'name')
     search_fields = ('name', 'body', 'book')
+    actions = ['approve_comments']
 
+    def approve_comments(self, request, queryset):
+        queryset.update(approved=True)

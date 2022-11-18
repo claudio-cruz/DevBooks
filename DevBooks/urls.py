@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('', views.get_home_page, name='get_home_page'),
-    path('finance', views.get_finance_categorie_page, name='get_finance_categorie_page')
+    path('finance', views.get_finance_category_page, name='get_finance_category_page')
 ]
