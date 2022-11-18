@@ -22,7 +22,6 @@ class Book(models.Model):
     slug = models.SlugField(max_length=100, unique=True)
     author = models.CharField(max_length=100)
     featured_image = CloudinaryField('image', default='placeholder')
-    published_in = models.DateTimeField()
     content = models.TextField()
     likes = models.ManyToManyField(
         User, related_name='book_like', blank=True)
