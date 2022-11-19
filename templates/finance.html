@@ -10,6 +10,7 @@
   </div>
 </div>
 
+
 <!-- Top books list -->
 <div class="row container-fluid">
   <div class="col-lg-8 mx-auto">
@@ -18,7 +19,8 @@
     <!-- List group -->
     <ul class="list-group shadow">
 
-      {% for book in book_list %}
+      {% for book in object_list %}
+      
       <!-- Book list -->
       <li class="list-group-item">
         <!-- Custom content-->
@@ -28,7 +30,7 @@
             <h5 class="mt-0 font-weight-bold mb-2">{{ book.title }}</h5>
             <p class="font-italic text-muted mb-0 small">
               <!-- Book Description -->
-              {{ book.body }}
+              {{ book.content | safe }}
             </p>
             <div class="d-flex align-items-center justify-content-between mt-1">
               <div class="row justify-content-md-center m-0">
@@ -88,6 +90,4 @@
     </ul> <!-- End -->
   </div>
 </div>
-
-
-{%endblock%}
+{% endblock %}

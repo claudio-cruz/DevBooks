@@ -3,7 +3,10 @@ from . import models
 from django_summernote.admin import SummernoteModelAdmin
 
 
-admin.site.register(models.Category)
+@admin.register(models.Category)
+class CategoryAdmin(admin.ModelAdmin):
+
+    list_display = ('id', 'category')
 
 
 @admin.register(models.Book)
