@@ -36,7 +36,7 @@
               <div class="row justify-content-md-center m-0">
 
                 <div type="button" class="btn"><i class="fa-regular fa-heart"></i> {{ book.number_of_likes }}</div>
-                <div type="button" class="btn"><a href="{{ Book.buy_button }}" class="btn btn-info" role="button"
+                <div type="button" class="btn"><a href="{{ book.buy_button }}" class="btn btn-info" role="button"
                     target="_blank">Buy Book</a></div>
                 <div type="button" class="btn">fav</div>
                 <!-- Book Comments -->
@@ -80,12 +80,12 @@
           </div>
           <!-- Book Image -->
           {% if "placeholder" in book.featured_image.url %}
-          <img src="{{ book.featured_image.url }}" alt="Book cover" width="200"
+          <img class="card-img-top" src="https://res.cloudinary.com/djmk0qtgj/image/upload/v1668793432/standard_book_cover_sby567.jpg" alt="{{ book.title }}" width="200"
             class="ml-lg-5 order-1 order-lg-2 mx-auto d-block">
           {% else %}
           <img
-            src="{https://res.cloudinary.com/djmk0qtgj/image/upload/c_scale,w_200/v1668793432/standard_book_cover_sby567.jpg"
-            alt="Book cover" width="200" class="ml-lg-5 order-1 order-lg-2 mx-auto d-block">
+            src="{{ book.featured_image.url }}"
+            alt="{{ book.title }}" width="200" class="ml-lg-5 order-1 order-lg-2 mx-auto d-block">
           {% endif %}
         </div>
       </li>
