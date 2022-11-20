@@ -32,6 +32,7 @@ class Book(models.Model):
     favourites = models.ManyToManyField(
         User, related_name='favourite', default=None, blank=True)
     status = models.IntegerField(choices=STATUS, default=0)
+    buy_button = models.URLField(max_length=200, default='https://www.amazon.com/')
 
     class Meta:
         ordering = ["title"]
