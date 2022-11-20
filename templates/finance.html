@@ -33,24 +33,26 @@
               {{ book.content | safe }}
             </p>
             <div class="d-flex align-items-center justify-content-between mt-1">
-              <div class="row justify-content-md-center m-0">
-
+              <div class="row justify-content-md m-0">
+                <!-- Like Button -->
                 <div type="button" class="btn"><i class="fa-regular fa-heart"></i> {{ book.number_of_likes }}</div>
+                <!-- Buy Book Button -->
                 <div type="button" class="btn"><a href="{{ book.buy_button }}" class="btn btn-info" role="button"
                     target="_blank">Buy Book</a></div>
+                <!-- Add To Favourite Button -->
                 <div type="button" class="btn">fav</div>
                 <!-- Book Comments -->
                 <div class="card">
                   <div class="card" id="headingOne">
                     <h5 class="mb-0">
-                      <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
-                        aria-controls="collapseOne">
+                      <button class="btn" data-toggle="collapse" data-target="#collapse{{ book.title }}" aria-expanded="false"
+                        aria-controls="collapse{{ book.title }}">
                         <i class="fa-regular fa-comment"></i> Comments
                       </button>
                     </h5>
                   </div>
 
-                  <div id="collapseOne" class="collapse overflow-auto" aria-labelledby="headingOne"
+                  <div id="collapse{{ book.title }}" class="collapse overflow-auto" aria-labelledby="headingOne"
                     data-parent="#accordion">
                     <div class="card-body">
                       <div class="row">
