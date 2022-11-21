@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
 from .models import Book, Category
+from .forms import CommentForm
 
 
 def get_home_page(request):
