@@ -1,18 +1,18 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
-from .models import Book, Category
+from .models import Book, Category, Comment
 from .forms import CommentForm
 
 
 def get_home_page(request):
     return render(request, 'index.html')
 
-class FinanceBookList(generic.ListView):
-    model = Book
-    template_name = "finance.html"
-    paginate_by = 10
 
-    def get_queryset(self):
-            filter_list= Book.objects.filter(category= 34).filter(status= 1)
-            return filter_list
-    
+class FinanceBookList(generic.ListView):
+    queryset = Book.objects.order_by('title').filter(category=34)
+    template_name = "finance.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = Comment.objects.filter(approved=True).order_by('-created_on')
+        return context
