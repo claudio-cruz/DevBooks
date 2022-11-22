@@ -29,9 +29,32 @@ class BiographyBookList(generic.ListView):
         
         return context
 
+
 class HealthBookList(generic.ListView):
     queryset = Book.objects.order_by('title').filter(category=36)
     template_name = "health.html"
+
+    def get_comment_data(self, **kwargs):
+        context = super().get_comment_data(**kwargs)
+        context['comments'] = Comment.objects.filter(approved=True).order_by('-created_on')
+        
+        return context
+
+
+class SpiritualBookList(generic.ListView):
+    queryset = Book.objects.order_by('title').filter(category=35)
+    template_name = "spiritual.html"
+
+    def get_comment_data(self, **kwargs):
+        context = super().get_comment_data(**kwargs)
+        context['comments'] = Comment.objects.filter(approved=True).order_by('-created_on')
+        
+        return context
+    
+
+class LeadershipBookList(generic.ListView):
+    queryset = Book.objects.order_by('title').filter(category=37)
+    template_name = "leadership.html"
 
     def get_comment_data(self, **kwargs):
         context = super().get_comment_data(**kwargs)
