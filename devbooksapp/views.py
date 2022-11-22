@@ -12,7 +12,19 @@ class FinanceBookList(generic.ListView):
     queryset = Book.objects.order_by('title').filter(category=34)
     template_name = "finance.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get_comment_data(self, **kwargs):
+        context = super().get_comment_data(**kwargs)
         context['comments'] = Comment.objects.filter(approved=True).order_by('-created_on')
+        
+        return context
+
+
+class BiographyBookList(generic.ListView):
+    queryset = Book.objects.order_by('title').filter(category=38)
+    template_name = "biography.html"
+
+    def get_comment_data(self, **kwargs):
+        context = super().get_comment_data(**kwargs)
+        context['comments'] = Comment.objects.filter(approved=True).order_by('-created_on')
+        
         return context
