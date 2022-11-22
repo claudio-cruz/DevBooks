@@ -28,3 +28,13 @@ class BiographyBookList(generic.ListView):
         context['comments'] = Comment.objects.filter(approved=True).order_by('-created_on')
         
         return context
+
+class HealthBookList(generic.ListView):
+    queryset = Book.objects.order_by('title').filter(category=36)
+    template_name = "health.html"
+
+    def get_comment_data(self, **kwargs):
+        context = super().get_comment_data(**kwargs)
+        context['comments'] = Comment.objects.filter(approved=True).order_by('-created_on')
+        
+        return context
