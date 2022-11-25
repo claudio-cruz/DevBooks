@@ -6,8 +6,12 @@ from .forms import CommentForm
 
 
 
-def get_home_page(request):
-    return render(request, 'index.html')
+#def get_home_page(request):
+#    return render(request, 'index.html')
+
+class HomePage(generic.ListView):
+    queryset = Book.objects.order_by('title')
+    template_name = 'index.html'
 
 
 class FinanceBookList(generic.ListView):

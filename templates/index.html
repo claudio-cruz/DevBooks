@@ -2,17 +2,50 @@
 
 {% block content %}
 
-<div class="bg-image" style="background-image: url('https://res.cloudinary.com/djmk0qtgj/image/upload/v1668054415/thought-catalog-o0Qqw21-0NI-unsplash_1_dzrcmi.jpg');
-   height: 90vh; background-size: cover; background-repeat: no-repeat;
-    background-position: center center; background-attachment: fixed;">
+{% load crispy_forms_tags %}
 
+<div class="container-fluid">
+  <!-- Home page title -->
   <div class="container-fluid">
     <h1 id="logo">DevBooks</h1>
-
-
   </div>
 
+  <!-- Dropdown links -->
+  <div class="container">
+    <div class="row justify-content-center">
+
+      <div class="dropdown col-auto">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Categories
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="{% url 'finance-book-list' %}"><i
+            class="fa-solid fa-money-bill-trend-up"></i> Finance</a></li>
+            <li><a class="dropdown-item" href="{% url 'spiritual-book-list' %}"><i class="fa-solid fa-peace"></i> Spiritual</a></li>
+            <li><a class="dropdown-item" href="{% url 'health-book-list' %}"><i class="fa-solid fa-dumbbell"></i> Health</a></li>
+            <li><a class="dropdown-item" href="{% url 'leadership-book-list' %}"><i class="fa-solid fa-brain"></i> Leadership</a></li>
+            <li><a class="dropdown-item" href="{% url 'biography-book-list' %}"><i class="fa-solid fa-user-large"></i> Biographies</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown col-auto">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Books
+        </button>
+        <ul class="dropdown-menu">
+          {% for book in book_list %}
+          <li><a class="dropdown-item" href="#{{ book.slug }}">{{ book.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    
+    </div>
+  </div>
+
+  
 </div>
+
+
 
 
 
