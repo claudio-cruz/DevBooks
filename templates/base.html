@@ -23,7 +23,7 @@
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="home-navbar">
-    <a class="navbar-brand" id="logo-nav" href="#"><i class="fa-solid fa-book"></i> DevBooks</a>
+    <a class="navbar-brand" id="logo-nav" href="{% url 'get_home_page' %}"><i class="fa-solid fa-book"></i> DevBooks</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></i></span>
@@ -88,7 +88,7 @@
   </button>
 
   <!-- Footer -->
-  <footer class="text-center sticky-bottom text-white">
+  <footer class="text-center text-white mt-auto">
     <!-- Facebook -->
     <a class="btn btn-link btn-floating btn-lg text-dark" href="https://www.facebook.com/" target="_blank" role="button"
       data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
@@ -110,8 +110,8 @@
       data-mdb-ripple-color="dark"><i class="fab fa-linkedin"></i></a>
   </footer>
 
-  <script src="/static/js/script.js"></script>
 
+  <script src="/static/js/script.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
@@ -121,7 +121,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-
 
 
 </body>

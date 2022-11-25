@@ -4,27 +4,30 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 footer {
-    background-color: #e5d9d9
+    background-color: rgb(144, 156, 168);
 }
 
-#home-navbar{
-    background-color: #efdecd;
+#home-navbar {
+    background-color: rgb(144, 156, 168);
 }
 
-#logo-nav{
+#logo-nav {
     font-family: 'Carter One', cursive;
 }
 
-#logo{
+#logo {
     font-family: 'Carter One', cursive;
     text-align: center;
     margin-top: 2%;
 }
 
-#book-list-homepage{
+#book-list-homepage {
     margin: 3%;
 }
 
@@ -39,4 +42,4 @@ footer {
     display: none;
     background-color: #A9A9A9;
     border-color: black;
-  }
+}
