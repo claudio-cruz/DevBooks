@@ -42,16 +42,19 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{% url 'finance-book-list' %}"><i
                 class="fa-solid fa-money-bill-trend-up"></i> Finance</a>
-            <a class="dropdown-item" href="{% url 'spiritual-book-list' %}"><i class="fa-solid fa-peace"></i> Spiritual</a>
+            <a class="dropdown-item" href="{% url 'spiritual-book-list' %}"><i class="fa-solid fa-peace"></i>
+              Spiritual</a>
             <a class="dropdown-item" href="{% url 'health-book-list' %}"><i class="fa-solid fa-dumbbell"></i> Health</a>
-            <a class="dropdown-item" href="{% url 'leadership-book-list' %}"><i class="fa-solid fa-brain"></i> Leadership</a>
-            <a class="dropdown-item" href="{% url 'biography-book-list' %}"><i class="fa-solid fa-user-large"></i> Biographies</a>
+            <a class="dropdown-item" href="{% url 'leadership-book-list' %}"><i class="fa-solid fa-brain"></i>
+              Leadership</a>
+            <a class="dropdown-item" href="{% url 'biography-book-list' %}"><i class="fa-solid fa-user-large"></i>
+              Biographies</a>
           </div>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#">About Us</a>
         </li>
-        
+
         {% if user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
@@ -79,8 +82,13 @@
     {% endblock content %}
   </main>
 
+  <!-- Back to top Button -->
+  <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
   <!-- Footer -->
-  <footer class="text-center fixed-bottom sticky-bottom text-white">
+  <footer class="text-center sticky-bottom text-white">
     <!-- Facebook -->
     <a class="btn btn-link btn-floating btn-lg text-dark" href="https://www.facebook.com/" target="_blank" role="button"
       data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
@@ -102,6 +110,8 @@
       data-mdb-ripple-color="dark"><i class="fab fa-linkedin"></i></a>
   </footer>
 
+  <script src="/static/js/script.js"></script>
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
@@ -111,6 +121,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+
+
 
 </body>
 
