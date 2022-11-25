@@ -1,14 +1,23 @@
-#home-navbar {
+#home-navbar{
     background-color: #efdecd;
 }
 
-#logo-nav {
+#logo-nav{
     font-family: 'Carter One', cursive;
 }
 
 #logo{
     font-family: 'Carter One', cursive;
     text-align: center;
+    margin-top: 2%;
+}
+
+#book-list-homepage{
+    margin: 2%;
+}
+
+#dropdown-searsh {
+    margin-top: 5%;
 }
 
 body {
