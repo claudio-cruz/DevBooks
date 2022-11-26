@@ -23,94 +23,96 @@
       {% for book in book_list %}
 
       <!-- Book list -->
-      <li class="list-group-item" id="{{ book.slug }}">
-        <!-- Custom content-->
-        <div class="media align-items-lg-center flex-column flex-lg-row p-3">
-          <div class="media-body order-2 order-lg-1">
-            <!-- Book Title -->
-            <h3 class="mt-0 font-weight-bold mb-2 text-center">{{ book.title }}</h3>
-            <p class="font-italic text-muted mb-0 small">
-              <!-- Book Description -->
-              {{ book.content | safe }}
-            </p>
-            <div class="d-flex align-items-center justify-content-between mt-1">
-              <div class="row justify-content-md m-0">
-                <!-- Like Button -->
-                <div type="button" class="btn"><i class="fa-regular fa-heart"></i> {{ book.number_of_likes }}</div>
-                <!-- Buy Book Button -->
-                <div type="button" class="btn"><a href="{{ book.buy_button }}" class="btn btn-info" role="button"
-                    target="_blank">Buy Book</a></div>
-                <!-- Add To Favourite Button -->
-                <div type="button" class="btn">fav</div>
+      <span class="border border-dark book-list">
+        <li class="list-group-item" id="{{ book.slug }}">
+          <!-- Custom content-->
+          <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+            <div class="media-body order-2 order-lg-1">
+              <!-- Book Title -->
+              <h3 class="mt-0 font-weight-bold mb-2 text-center">{{ book.title }}</h3>
+              <p class="font-italic text-muted mb-0 small">
+                <!-- Book Description -->
+                {{ book.content | safe }}
+              </p>
+              <div class="d-flex align-items-center justify-content-between mt-1">
+                <div class="row justify-content-md m-0">
+                  <!-- Like Button -->
+                  <div type="button" class="btn"><i class="fa-regular fa-heart"></i> {{ book.number_of_likes }}</div>
+                  <!-- Buy Book Button -->
+                  <div type="button" class="btn"><a href="{{ book.buy_button }}" class="btn btn-info" role="button"
+                      target="_blank">Buy Book</a></div>
+                  <!-- Add To Favourite Button -->
+                  <div type="button" class="btn">fav</div>
 
-                <!-- Book Comments -->
-                {% with comments.count as total_comments %}
-                <div class="card">
-                  <div class="card" id="headingOne">
-                    <h5 class="mb-0">
-                      <button class="btn" data-toggle="collapse" data-target="#collapse{{ book.title }}"
-                        aria-expanded="false" aria-controls="collapse{{ book.title }}">
-                        <i class="fa-regular fa-comment"></i> {{ total_comments }} Comments
-                      </button>
-                    </h5>
-                  </div>
-                  {% endwith %}
+                  <!-- Book Comments -->
+                  {% with comments.count as total_comments %}
+                  <div class="card">
+                    <div class="card" id="headingOne">
+                      <h5 class="mb-0">
+                        <button class="btn" data-toggle="collapse" data-target="#collapse{{ book.title }}"
+                          aria-expanded="false" aria-controls="collapse{{ book.title }}">
+                          <i class="fa-regular fa-comment"></i> {{ total_comments }} Comments
+                        </button>
+                      </h5>
+                    </div>
+                    {% endwith %}
 
-                  <div id="collapse{{ book.title }}" class="collapse overflow-auto" aria-labelledby="headingOne"
-                    data-parent="#accordion">
-                    <div class="card-body">
+                    <div id="collapse{{ book.title }}" class="collapse overflow-auto" aria-labelledby="headingOne"
+                      data-parent="#accordion">
+                      <div class="card-body">
 
-                      {% if user.is_authenticated %}
-                      <form action="submit_survey" class="blueForms" id="id-exampleForm" method="post">
-                        {{ comment_form | crispy }}
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-signup btn-sm">Submit Comment</button>
-                      </form>
-                      {% endif %}
+                        {% if user.is_authenticated %}
+                        <form action="submit_survey" class="blueForms" id="id-exampleForm" method="post">
+                          {{ comment_form | crispy }}
+                          {% csrf_token %}
+                          <button type="submit" class="btn btn-signup btn-sm">Submit Comment</button>
+                        </form>
+                        {% endif %}
 
-                      {% for comment in book.comments.all %}
-                      <div class="comments">
-                        <p class="font-weight-bold">
-                          <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
-                          {{ comment.name }}
-                          <span class=" text-muted font-weight-normal">
-                            <!-- The comment's created date goes here -->
-                            {{ comment.created_on }}
-                          </span> wrote:
-                        </p>
-                        <!-- The body of the comment goes before the | -->
-                        {{ comment.body | linebreaks }}
+                        {% for comment in book.comments.all %}
+                        <div class="comments">
+                          <p class="font-weight-bold">
+                            <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
+                            {{ comment.name }}
+                            <span class=" text-muted font-weight-normal">
+                              <!-- The comment's created date goes here -->
+                              {{ comment.created_on }}
+                            </span> wrote:
+                          </p>
+                          <!-- The body of the comment goes before the | -->
+                          {{ comment.body | linebreaks }}
+                        </div>
+                        <!-- Our for loop ends here -->
+                        {% endfor %}
+
                       </div>
-                      <!-- Our for loop ends here -->
-                      {% endfor %}
+                      <div class="row">
+                        <div type="button" class="btn mx-auto btn-outline-secondary btn-sm">Go to the top <i
+                            class="fa-solid fa-up-long"></i></div>
+
+                      </div>
+
 
                     </div>
-                    <div class="row">
-                      <div type="button" class="btn mx-auto btn-outline-secondary btn-sm">Go to the top <i
-                          class="fa-solid fa-up-long"></i></div>
-
-                    </div>
-
-
                   </div>
+
+
                 </div>
 
-
               </div>
-
             </div>
+            <!-- Book Image -->
+            {% if "placeholder" in book.featured_image.url %}
+            <img class="card-img-top"
+              src="https://res.cloudinary.com/djmk0qtgj/image/upload/v1668793432/standard_book_cover_sby567.jpg"
+              alt="{{ book.title }}" width="200" class="ml-lg-5 order-1 order-lg-2 mx-auto d-block">
+            {% else %}
+            <img src="{{ book.featured_image.url }}" alt="{{ book.title }}" width="200"
+              class="ml-lg-5 order-1 order-lg-2 mx-auto d-block">
+            {% endif %}
           </div>
-          <!-- Book Image -->
-          {% if "placeholder" in book.featured_image.url %}
-          <img class="card-img-top"
-            src="https://res.cloudinary.com/djmk0qtgj/image/upload/v1668793432/standard_book_cover_sby567.jpg"
-            alt="{{ book.title }}" width="200" class="ml-lg-5 order-1 order-lg-2 mx-auto d-block">
-          {% else %}
-          <img src="{{ book.featured_image.url }}" alt="{{ book.title }}" width="200"
-            class="ml-lg-5 order-1 order-lg-2 mx-auto d-block">
-          {% endif %}
-        </div>
-      </li>
+        </li>
+      </span>
       {% endfor %}
 
     </ul> <!-- End -->

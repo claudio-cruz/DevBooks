@@ -27,8 +27,8 @@ footer {
     margin-top: 2%;
 }
 
-#book-list-homepage {
-    margin: 3%;
+.book-list {
+    margin: 2%;
 }
 
 #dropdown-searsh {
@@ -59,3 +59,4 @@ footer {
 #about-us-text {
     font-size: 1.2rem;
 }
+
