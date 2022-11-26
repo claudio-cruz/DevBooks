@@ -32,19 +32,40 @@
                 <!-- Book Description -->
                 {{ book.content | safe }}
               </p>
-              <div class="d-flex align-items-center justify-content-between mt-1">
-                <div class="row justify-content-md m-0">
+
+              <div class=" container d-flex align-items-center justify-content-between mt-1">
+                <div class="row content-md m-0">
+
                   <!-- Like Button -->
-                  <div type="button" class="btn"><i class="fa-regular fa-heart"></i> {{ book.number_of_likes }}</div>
+
+                  <strong class="likes">
+                    {% if user.is_authenticated %}
+                    <form class="d-inline" action="{% url 'book_like' book.slug %}" method="POST">
+                      {% csrf_token %}
+                      {% if liked %}
+                      <button type="submit" name="blogpost_id" value="{{book.slug}}" class="btn-like"><i
+                          class="fas fa-heart"></i></button>
+                      {% else %}
+                      <button type="submit" name="{{ book.slug }}" value="{{book.slug}}" class="btn-like"><i
+                          class="far fa-heart"></i></button>
+                      {% endif %}
+                    </form>
+                    {% else %}
+                    <span class="text-secondary"><i class="far fa-heart"></i></span>
+                    {% endif %}
+                    <!-- Number of likes -->
+                    <span class="text-secondary">{{ book.number_of_likes }} </span>
+                  </strong>
+
+
                   <!-- Buy Book Button -->
-                  <div type="button" class="btn"><a href="{{ book.buy_button }}" class="btn btn-info" role="button"
+                  <div type="button" class="btn-sm"><a href="{{ book.buy_button }}" class="btn btn-info" role="button"
                       target="_blank">Buy Book</a></div>
-                  <!-- Add To Favourite Button -->
-                  <div type="button" class="btn">fav</div>
+
 
                   <!-- Book Comments -->
-                  {% with comments.count as total_comments %}
-                  <div class="card">
+                  {% with book.comments.count as total_comments %}
+                  <div>
                     <div class="card" id="headingOne">
                       <h5 class="mb-0">
                         <button class="btn" data-toggle="collapse" data-target="#collapse{{ book.title }}"
@@ -55,39 +76,40 @@
                     </div>
                     {% endwith %}
 
-                    <div id="collapse{{ book.title }}" class="collapse overflow-auto" aria-labelledby="headingOne"
+                    <div id="collapse{{ book.title }}" class="collapse overflow-auto" aria-labelledby="heading{{ book.title }}"
                       data-parent="#accordion">
                       <div class="card-body">
 
                         {% if user.is_authenticated %}
-                        <form class="blueForms" method="post">
+                        <form class="blueForms" method="post" action="{% url 'comment' book.id %}">
                           {% csrf_token %}
                           {{ comment_form | crispy }}
                           <button type="submit" class="btn btn-signup btn-sm">Submit Comment</button>
                         </form>
                         {% endif %}
-
+                        
                         {% for comment in book.comments.all %}
-                        <div class="comments">
+                        {% if comment in comments %}
+                        <div class="comments book-comments">
                           <p class="font-weight-bold">
-                            <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
+                            <!-- Comment name -->
                             {{ comment.name }}
                             <span class=" text-muted font-weight-normal">
-                              <!-- The comment's created date goes here -->
+                              <!-- Comments created date -->
                               {{ comment.created_on }}
                             </span> wrote:
                           </p>
-                          <!-- The body of the comment goes before the | -->
+                          <!-- Comment -->
                           {{ comment.body | linebreaks }}
                         </div>
-                        <!-- Our for loop ends here -->
+                        {% endif %}
                         {% endfor %}
-
+                        
                       </div>
                       <!-- Button to top of the comments -->
                       <div class="row">
-                        <div type="button" class="btn mx-auto btn-sm"><a href="#collapse{{ book.title }}" 
-                          class="text-decoration-none">Back to top</a>  <i class="fa-solid fa-up-long"></i></div>
+                        <div type="button" class="btn mx-auto btn-sm"><a href="#collapse{{ book.title }}"
+                            class="text-decoration-none">Back to top</a></div>
                       </div>
 
 

@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views.generic.edit import CreateView
 from django.views import generic, View
+from django.http import HttpResponseRedirect
 from .models import Book, Category, Comment
 from .forms import CommentForm
 
@@ -25,33 +26,22 @@ class FinanceBookList(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['comments'] = Comment.objects.filter(approved=True).order_by('-created_on')
-        context['comment_form'] = CommentForm(self.request.GET)
+        context['comment_form'] = CommentForm(self.request.POST)
         return context
 
-    #def add_comment(request):
-    #    if request.method == 'POST':
-    #        book = get_object_or_404(queryset, id=Book_id)
-    #        form  = CommentForm(request.POST)
-    #        if form.is_valid():
-    #            form.save()
-    #            return redirect('FinanceBookList')
     
 class CommentBookList(CreateView):
-    def post_comment(request):
+    
+    model = Comment
+    form_class = CommentForm
+    success_url = 'https://8000-claudiocruz-devbooks-zthg18alnnz.ws-eu77.gitpod.io/finance/'
 
-        if request.method == 'POST':
-            comment_form = CommentForm(data=request.POST)
-            if comment_form.is_valid():
-                comment_form.instance.name = request.user.username
-                comment = comment_form.save(commit=False)
-                comment.post = post
-                comment.save()
-            else:
-                comment_form = CommentForm()
-
-            return redirect('FinanceBookList')
-
-        
+    def form_valid(self, form):
+        form.instance.name = self.request.user.username
+        book = get_object_or_404(Book, id=self.kwargs['pk'])
+        form.instance.title = book
+        form.save()
+        return super().form_valid(form)
 
 
 class BiographyBookList(generic.ListView):
@@ -96,3 +86,15 @@ class LeadershipBookList(generic.ListView):
         context['comments'] = Comment.objects.filter(approved=True).order_by('-created_on')
         context['comment_form'] = CommentForm(self.request.GET)
         return context
+
+
+class BookLike(View):
+    
+    def post(self, request, slug, *args, **kwargs):
+        post = get_object_or_404(Book, book.title )
+        if post.likes.filter(id=request.user.id).exists():
+            post.likes.remove(request.user)
+        else:
+            post.likes.add(request.user)
+
+        return HttpResponseRedirect(reverse('finance-book-list', args=[ book.title ]))

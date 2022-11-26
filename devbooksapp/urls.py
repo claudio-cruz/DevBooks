@@ -10,4 +10,6 @@ urlpatterns = [
     path('spiritual/', views.SpiritualBookList.as_view(), name='spiritual-book-list'),
     path('leadership/', views.LeadershipBookList.as_view(), name='leadership-book-list'),
     path('aboutus/', views.AboutUsPage.as_view(), name='get_aboutus_page'),
+    path('like/<slug:slug>', views.BookLike.as_view(), name='book_like'),
+    path('comment/<int:pk>', views.CommentBookList.as_view(), name="comment")
 ]

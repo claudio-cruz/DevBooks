@@ -60,3 +60,27 @@ footer {
     font-size: 1.2rem;
 }
 
+.top-comments {
+    text-decoration: none;
+}
+
+.btn-like {
+    color: #E84610;
+    border: none;
+    background: transparent;
+}
+
+.btn-like:hover,
+.btn-like:active {
+    color: #E84610;
+    background: transparent;
+    border: none;
+}
+
+.likes {
+    margin-top: 12px;
+}
+
+#headingOne {
+    margin-top: 5.5px;
+}
