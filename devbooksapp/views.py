@@ -13,6 +13,10 @@ class HomePage(generic.ListView):
     queryset = Book.objects.order_by('title')
     template_name = 'index.html'
 
+class AboutUsPage(generic.ListView):
+    queryset = Book.objects.order_by('title')
+    template_name = 'aboutus.html'
+
 
 class FinanceBookList(generic.ListView):
     queryset = Book.objects.order_by('title').filter(category=34)

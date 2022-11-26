@@ -9,4 +9,5 @@ urlpatterns = [
     path('health/', views.HealthBookList.as_view(), name='health-book-list'),
     path('spiritual/', views.SpiritualBookList.as_view(), name='spiritual-book-list'),
     path('leadership/', views.LeadershipBookList.as_view(), name='leadership-book-list'),
+    path('aboutus/', views.AboutUsPage.as_view(), name='get_aboutus_page'),
 ]
