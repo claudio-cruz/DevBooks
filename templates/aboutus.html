@@ -2,31 +2,34 @@
 
 {% block content %}
 
-
+<!-- About us container -->
 <section class="vh-100 gradient-custom">
     <div class="container py-5 h-0">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card bg-dark text-white" style="border-radius: 1rem;">
-                    <div class="card-body p-5 text-center">
+            
+                <div class="card bg-dark text-white card-radius">
+                    <div class="card-body p-5 text-center" id="about-us-text">
 
-                        <div class="mb-md-5 mt-md-4 pb-5">
+                        <h2 class="fw-bold mb-2 text-uppercase">About Us</h2>
 
-                            <h2 class="fw-bold mb-2 text-uppercase">About Us</h2>
+                        <!-- About us test -->
+                        <p><br>DevBooks is a platform where you who love books, in particular self-development books,
+                            can find the books
+                            that you are looking for to read next.
 
-                            <p>DevBooks is a platform where you who love books, in particular self-development books,
-                                can find the books
-                                that you are looking for to read next.
+                            This platform was made for you to find the books you like, buy them, read them, comment
+                            on them, and like
+                            them. You can read the comments of other readers and find out more about the particular
+                            books you are
+                            interested in before you buy and read them.
 
-                                This platform was made for you to find the books you like, buy them, read them, comment
-                                on them, and like
-                                them. You can read the comments of other readers and find out more about the particular
-                                books you are
-                                interested in before you buy and read them.
-
-                                We hope you find the book you are looking for here with us. Enjoy your reads.</p>
-
-                            <form method="post" action="{% url 'account_logout' %}">
+                            We hope you find the book you are looking for here with us. Enjoy your reads.
+                        </p>
+                        
+                        <!-- Feedback form -->
+                        {% if user.is_authenticated %}
+                        <div class="container col-12 col-md-8 col-lg-6 col-xl-5">
+                            <form method="post" class="feedback-form">
                                 {% csrf_token %}
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
@@ -34,17 +37,19 @@
                                         placeholder="name@example.com">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleFormControlTextarea1" class="form-label">Give us you feedback!</label>
+                                    <label for="exampleFormControlTextarea1" class="form-label">Give us you feedback</label>
                                     <textarea class="form-control" id="exampleFormControlTextarea1"
                                     placeholder="Write your feedback here..." rows="3"></textarea>
                                 </div>
-                                <button class="btn btn-signup right" type="submit">Submit</button>
+                                <button class="btn btn-signup right" id="sign-in-btn" type="submit">Submit</button>
                             </form>
-
                         </div>
+                        {% endif %}
+
+
                     </div>
                 </div>
-            </div>
+            
         </div>
     </div>
 </section>
