@@ -37,7 +37,7 @@ class FinanceBookList(generic.ListView):
     #            return redirect('FinanceBookList')
     
 class CommentBookList(CreateView):
-    def add_comment(request):
+    def post_comment(request):
 
         if request.method == 'POST':
             comment_form = CommentForm(data=request.POST)
@@ -61,7 +61,7 @@ class BiographyBookList(generic.ListView):
     def get_comment_data(self, **kwargs):
         context = super().get_comment_data(**kwargs)
         context['comments'] = Comment.objects.filter(approved=True).order_by('-created_on')
-        
+        context['comment_form'] = CommentForm(self.request.GET)
         return context
 
 
@@ -72,7 +72,7 @@ class HealthBookList(generic.ListView):
     def get_comment_data(self, **kwargs):
         context = super().get_comment_data(**kwargs)
         context['comments'] = Comment.objects.filter(approved=True).order_by('-created_on')
-        
+        context['comment_form'] = CommentForm(self.request.GET)
         return context
 
 
@@ -83,7 +83,7 @@ class SpiritualBookList(generic.ListView):
     def get_comment_data(self, **kwargs):
         context = super().get_comment_data(**kwargs)
         context['comments'] = Comment.objects.filter(approved=True).order_by('-created_on')
-        
+        context['comment_form'] = CommentForm(self.request.GET)
         return context
     
 
@@ -94,5 +94,5 @@ class LeadershipBookList(generic.ListView):
     def get_comment_data(self, **kwargs):
         context = super().get_comment_data(**kwargs)
         context['comments'] = Comment.objects.filter(approved=True).order_by('-created_on')
-        
+        context['comment_form'] = CommentForm(self.request.GET)
         return context
