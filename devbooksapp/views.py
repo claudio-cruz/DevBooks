@@ -101,9 +101,8 @@ class CommentBookList(CreateView):
         return super().form_valid(form)
 
 
-def delete_comment(request, pk):
-    comment = Comment.objects.filter(book=pk).last()
-    category_name = Book.category.field
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
     if request.user.username == comment.name:
         comment.delete()
     
