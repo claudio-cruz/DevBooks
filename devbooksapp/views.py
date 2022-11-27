@@ -124,10 +124,36 @@ def delete_comment(request, pk):
 class BookLike(View):
 
     def post(self, request, slug, *args, **kwargs):
+
         book = get_object_or_404(Book, book.title )
         if book.likes.filter(id=request.user.id).exists():
             book.likes.remove(request.user)
         else:
             book.likes.add(request.user)
 
-#        return HttpResponseRedirect(reverse('get_home_page', args=[slug]))
+        return HttpResponseRedirect('get_home_page')
+
+
+def edit_comment(request, comment_id):
+    comment_edit = get_object_or_404(Comment, id=comment_id)
+    if request.method == 'POST':
+        form=CommentForm(request.POST, instance=comment_edit)
+        if form.is_valid():
+            form.save()
+            if 'finance-book-list':
+                return redirect('finance-book-list')
+            elif 'biography-book-list':
+                return redirect('biography-book-list')
+            elif 'health-book-list':
+                return redirect('health-book-list')
+            elif 'spiritual-book-list':
+                return redirect('spiritual-book-list')
+            elif 'leadership-book-list':
+                return redirect('leadership-book-list')
+            else:
+                return redirect('get_home_page')
+    form = CommentForm(instance=comment_edit)
+    context = {
+        'form': form
+    }
+    return render(request, 'edit_comment.html', context)

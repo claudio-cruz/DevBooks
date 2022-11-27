@@ -88,3 +88,9 @@ footer {
 .card-body {
     width: 100%;
 }
+
+#id_body {
+    margin: auto;
+    display: inline-block;
+    min-width: 70%;
+}

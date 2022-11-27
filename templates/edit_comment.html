@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<!-- Edit comment container -->
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-0">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            
+                <div class="card bg-dark text-white card-radius">
+                    <div class="card-body p-5 text-center">
+
+                        <h3 class="fw-bold mb-2 text-uppercase">Edit your comment here</h3>
+                        
+                        <!-- Edit comment form -->
+                        {% if user.is_authenticated %}
+                        <br>
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-signup btn-sm">Edit Comment</button>
+                        </form>
+                        
+                        {% endif %}
+
+
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+</section>
+
+{% endblock %}

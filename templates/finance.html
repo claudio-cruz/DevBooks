@@ -104,7 +104,7 @@
 
                           {% if request.user.username == comment.name %}
                           <div class="row container">
-                            <p><a class="btn btn-primary btn-sm" href="#">Edit Comment</a></p>
+                            <p><a class="btn btn-primary btn-sm" href="/edit/{{ comment.id }}">Edit Comment</a></p>
                             <p><a class="btn btn-danger btn-sm" href="{% url 'delete-comment' book.id %}">Delete Comment</a></p>
                           </div>
                           {% endif %}
