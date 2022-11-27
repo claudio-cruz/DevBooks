@@ -94,3 +94,9 @@ footer {
     display: inline-block;
     min-width: 70%;
 }
+
+.modal {
+    color: black;
+    text-align: center;
+}
+

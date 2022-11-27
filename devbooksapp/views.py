@@ -139,18 +139,21 @@ def edit_comment(request, comment_id):
         form=CommentForm(request.POST, instance=comment_edit)
         if form.is_valid():
             form.save()
-            if 'finance-book-list':
-                return redirect('finance-book-list')
-            elif 'biography-book-list':
-                return redirect('biography-book-list')
-            elif 'health-book-list':
-                return redirect('health-book-list')
-            elif 'spiritual-book-list':
-                return redirect('spiritual-book-list')
-            elif 'leadership-book-list':
-                return redirect('leadership-book-list')
-            else:
-                return redirect('get_home_page')
+
+        if 'finance-book-list':
+            return redirect('finance-book-list')
+        elif 'biography-book-list':
+            return redirect('biography-book-list')
+        elif 'health-book-list':
+            return redirect('health-book-list')
+        elif 'spiritual-book-list':
+            return redirect('spiritual-book-list')
+        elif 'leadership-book-list':
+            return redirect('leadership-book-list')
+        else:
+            return redirect('get_home_page')
+
+
     form = CommentForm(instance=comment_edit)
     context = {
         'form': form

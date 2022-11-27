@@ -104,14 +104,17 @@
 
                           {% if request.user.username == comment.name %}
                           <div class="row container">
-                            <p><a class="btn btn-primary btn-sm" href="/edit/{{ comment.id }}">Edit Comment</a></p>
-                            <p><a class="btn btn-danger btn-sm" href="/delete/{{ comment.id }}">Delete Comment</a></p>
+                            <div class="col-5">
+                              <a class="btn btn-primary btn-sm" href="/edit/{{ comment.id }}">Edit</a>
+                            </div>
+                            <div class="col-5">
+                              <a class="btn btn-danger btn-sm" href="/delete/{{ comment.id }}">Delete</a>
+                            </div>
                           </div>
                           {% endif %}
                         
                         </div>
-                        {{ book.category }}
-                        {{ book.id }}
+                        
                         {% endif %}
                         {% endfor %}
                         

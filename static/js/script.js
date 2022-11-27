@@ -23,3 +23,10 @@ function backToTop() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
+
+// Close the messages automatically after 2 secunds
+setTimeout(function () {
+  let messages = document.getElementById('msg');
+  let alert = new bootstrap.Alert(messages);
+  alert.close();
+}, 2000);

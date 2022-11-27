@@ -59,9 +59,6 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">My Page</a>
-        </li>
         {% else %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
@@ -74,6 +71,18 @@
       </ul>
     </div>
   </nav>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                {{ message | safe }}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+  </div>
 
   <!-- Home page main content -->
   <main class="flex-shrink-0 main-bg">
