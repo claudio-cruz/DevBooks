@@ -78,9 +78,13 @@ footer {
 }
 
 .likes {
-    margin-top: 12px;
+    margin-top: 10px;
 }
 
 #headingOne {
-    margin-top: 5.5px;
+    margin-top: 3px;
+}
+
+.card-body {
+    width: 100%;
 }

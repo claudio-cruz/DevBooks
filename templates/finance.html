@@ -99,15 +99,25 @@
                               {{ comment.created_on }}
                             </span> wrote:
                           </p>
-                          <!-- Comment -->
-                          {{ comment.body | linebreaks }}
+                          <!-- Comment body -->
+                          <p>{{ comment.body | linebreaks }}
+
+                          {% if request.user.username == comment.name %}
+                          <div class="row container">
+                            <p><a class="btn btn-primary btn-sm" href="#">Edit Comment</a></p>
+                            <p><a class="btn btn-danger btn-sm" href="{% url 'delete-comment' book.id %}">Delete Comment</a></p>
+                          </div>
+                          {% endif %}
+                        
                         </div>
+                        {{ book.category }}
+                        {{ book.id }}
                         {% endif %}
                         {% endfor %}
                         
                       </div>
                       <!-- Button to top of the comments -->
-                      <div class="row">
+                      <div class="row container">
                         <div type="button" class="btn mx-auto btn-sm"><a href="#collapse{{ book.title }}"
                             class="text-decoration-none">Back to top</a></div>
                       </div>
