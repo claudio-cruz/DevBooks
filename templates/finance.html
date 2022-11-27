@@ -43,11 +43,11 @@
                     <form class="d-inline" action="{% url 'book_like' book.slug %}" method="POST">
                       {% csrf_token %}
                       {% if liked %}
-                      <button type="submit" name="blogpost_id" value="{{book.slug}}" class="btn-like"><i
-                          class="fas fa-heart"></i></button>
+                      <button type="submit" name="blogbook_id" value="{{book.slug}}" class="btn-like">
+                        <i class="fa-solid fa-heart"></i></button>
                       {% else %}
-                      <button type="submit" name="{{ book.slug }}" value="{{book.slug}}" class="btn-like"><i
-                          class="far fa-heart"></i></button>
+                      <button type="submit" name="blogbook_id" value="{{book.slug}}" class="btn-like">
+                        <i class="fa-regular fa-heart"></i></button>
                       {% endif %}
                     </form>
                     {% else %}
@@ -76,8 +76,8 @@
                     </div>
                     {% endwith %}
 
-                    <div id="collapse{{ book.title }}" class="collapse overflow-auto" aria-labelledby="heading{{ book.title }}"
-                      data-parent="#accordion">
+                    <div id="collapse{{ book.title }}" class="collapse overflow-auto"
+                      aria-labelledby="heading{{ book.title }}" data-parent="#accordion">
                       <div class="card-body">
 
                         {% if user.is_authenticated %}
@@ -87,7 +87,7 @@
                           <button type="submit" class="btn btn-signup btn-sm">Submit Comment</button>
                         </form>
                         {% endif %}
-                        
+
                         {% for comment in book.comments.all %}
                         {% if comment in comments %}
                         <div class="comments book-comments">
@@ -102,7 +102,7 @@
                           <!-- Comment body -->
                           <p>{{ comment.body | linebreaks }}
 
-                          {% if request.user.username == comment.name %}
+                            {% if request.user.username == comment.name %}
                           <div class="row container">
                             <div class="col-5">
                               <a class="btn btn-primary btn-sm" href="/edit/{{ comment.id }}">Edit</a>
@@ -112,12 +112,12 @@
                             </div>
                           </div>
                           {% endif %}
-                        
+
                         </div>
-                        
+
                         {% endif %}
                         {% endfor %}
-                        
+
                       </div>
                       <!-- Button to top of the comments -->
                       <div class="row container">

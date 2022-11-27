@@ -124,13 +124,24 @@ class BookLike(View):
 
     def post(self, request, slug, *args, **kwargs):
 
-        book = get_object_or_404(Book, book.title )
+        book = get_object_or_404(Book, slug=slug)
         if book.likes.filter(id=request.user.id).exists():
             book.likes.remove(request.user)
         else:
             book.likes.add(request.user)
 
-        return HttpResponseRedirect('get_home_page')
+        if 'finance-book-list':
+            return redirect('finance-book-list')
+        elif 'biography-book-list':
+            return redirect('biography-book-list')
+        elif 'health-book-list':
+            return redirect('health-book-list')
+        elif 'spiritual-book-list':
+            return redirect('spiritual-book-list')
+        elif 'leadership-book-list':
+            return redirect('leadership-book-list')
+        else:
+            return redirect('get_home_page')
 
 
 def edit_comment(request, comment_id):
