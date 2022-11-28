@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 {% load crispy_forms_tags %}
-
 
 <div class="row text-center mb-5 container-fluid">
   <div class="col-lg-7 mx-auto">
@@ -12,7 +10,7 @@
   </div>
 </div>
 
-<!-- Top books list -->
+<!-- Books list -->
 <div class="row container-fluid">
   <div class="col-lg-8 mx-auto">
 
@@ -21,7 +19,7 @@
     <ul class="list-group shadow">
 
       {% for book in book_list %}
-
+      {% if book.status %}
       <!-- Book list -->
       <span class="border border-dark book-list">
         <li class="list-group-item" id="{{ book.slug }}">
@@ -34,19 +32,39 @@
                 <!-- Book Description -->
                 {{ book.content | safe }}
               </p>
-              <div class="d-flex align-items-center justify-content-between mt-1">
-                <div class="row justify-content-md m-0">
+
+              <div class=" container d-flex align-items-center justify-content-between mt-1">
+                <div class="row content-md m-0">
+
                   <!-- Like Button -->
-                  <div type="button" class="btn"><i class="fa-regular fa-heart"></i> {{ book.number_of_likes }}</div>
+                  <strong class="likes">
+                    {% if user.is_authenticated %}
+                    <form class="d-inline" action="{% url 'book_like' book.slug %}" method="POST">
+                      {% csrf_token %}
+                      {% if liked %}
+                      <button type="submit" name="blogbook_id" value="{{book.slug}}" class="btn-like">
+                        <i class="fa-solid fa-heart"></i></button>
+                      {% else %}
+                      <button type="submit" name="blogbook_id" value="{{book.slug}}" class="btn-like">
+                        <i class="fa-regular fa-heart"></i></button>
+                      {% endif %}
+                    </form>
+                    {% else %}
+                    <span class="text-secondary"><i class="far fa-heart"></i></span>
+                    {% endif %}
+                    <!-- Number of likes -->
+                    <span class="text-secondary">{{ book.number_of_likes }} </span>
+                  </strong>
+
+
                   <!-- Buy Book Button -->
-                  <div type="button" class="btn"><a href="{{ book.buy_button }}" class="btn btn-info" role="button"
+                  <div type="button" class="btn-sm"><a href="{{ book.buy_button }}" class="btn btn-info" role="button"
                       target="_blank">Buy Book</a></div>
-                  <!-- Add To Favourite Button -->
-                  <div type="button" class="btn">fav</div>
+
 
                   <!-- Book Comments -->
-                  {% with comments.count as total_comments %}
-                  <div class="card">
+                  {% with book.comments.count as total_comments %}
+                  <div>
                     <div class="card" id="headingOne">
                       <h5 class="mb-0">
                         <button class="btn" data-toggle="collapse" data-target="#collapse{{ book.title }}"
@@ -57,12 +75,12 @@
                     </div>
                     {% endwith %}
 
-                    <div id="collapse{{ book.title }}" class="collapse overflow-auto" aria-labelledby="headingOne"
-                      data-parent="#accordion">
+                    <div id="collapse{{ book.title }}" class="collapse overflow-auto"
+                      aria-labelledby="heading{{ book.title }}" data-parent="#accordion">
                       <div class="card-body">
 
                         {% if user.is_authenticated %}
-                        <form class="blueForms" method="post">
+                        <form class="blueForms" method="post" action="{% url 'comment' book.id %}">
                           {% csrf_token %}
                           {{ comment_form | crispy }}
                           <button type="submit" class="btn btn-signup btn-sm">Submit Comment</button>
@@ -70,26 +88,41 @@
                         {% endif %}
 
                         {% for comment in book.comments.all %}
-                        <div class="comments">
+                        {% if comment in comments %}
+                        <div class="comments book-comments">
                           <p class="font-weight-bold">
-                            <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
+                            <!-- Comment name -->
                             {{ comment.name }}
                             <span class=" text-muted font-weight-normal">
-                              <!-- The comment's created date goes here -->
+                              <!-- Comments created date -->
                               {{ comment.created_on }}
                             </span> wrote:
                           </p>
-                          <!-- The body of the comment goes before the | -->
-                          {{ comment.body | linebreaks }}
+                          <!-- Comment body -->
+                          <p>{{ comment.body | linebreaks }}</p>
+
+                          <!-- Edite and Delete Buttons -->
+                          {% if request.user.username == comment.name %}
+                          <div class="row container">
+                            <div class="col-5">
+                              <a class="btn btn-primary btn-sm" href="/edit/{{ comment.id }}">Edit</a>
+                            </div>
+                            <div class="col-5">
+                              <a class="btn btn-danger btn-sm" href="/delete/{{ comment.id }}">Delete</a>
+                            </div>
+                          </div>
+                          {% endif %}
+
                         </div>
-                        <!-- Our for loop ends here -->
+
+                        {% endif %}
                         {% endfor %}
 
                       </div>
-                      <div class="row">
-                        <div type="button" class="btn mx-auto btn-outline-secondary btn-sm">Go to the top <i
-                            class="fa-solid fa-up-long"></i></div>
-
+                      <!-- Button to top of the comments -->
+                      <div class="row container">
+                        <div type="button" class="btn mx-auto btn-sm"><a href="#collapse{{ book.title }}"
+                            class="text-decoration-none">Back to top</a></div>
                       </div>
 
 
@@ -103,9 +136,9 @@
             </div>
             <!-- Book Image -->
             {% if "placeholder" in book.featured_image.url %}
-            <img class="card-img-top"
+            <img class="ml-lg-5 order-1 order-lg-2 mx-auto d-block"
               src="https://res.cloudinary.com/djmk0qtgj/image/upload/v1668793432/standard_book_cover_sby567.jpg"
-              alt="{{ book.title }}" width="200" class="ml-lg-5 order-1 order-lg-2 mx-auto d-block">
+              alt="{{ book.title }}" width="200">
             {% else %}
             <img src="{{ book.featured_image.url }}" alt="{{ book.title }}" width="200"
               class="ml-lg-5 order-1 order-lg-2 mx-auto d-block">
@@ -113,9 +146,10 @@
           </div>
         </li>
       </span>
+      {% endif %}
       {% endfor %}
 
-    </ul> <!-- End -->
+    </ul>
   </div>
 </div>
 {% endblock %}

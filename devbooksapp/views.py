@@ -80,7 +80,7 @@ class CommentBookList(CreateView):
     form_class = CommentForm
 
     if 'finance-book-list':
-        success_url = 'https://8000-claudiocruz-devbooks-zthg18alnnz.ws-eu77.gitpod.io/finance/'
+        success_url = 'https://8000-claudiocruz-devbooks-zthg18alnnz.ws-eu77.gitpod.io/health/'
     elif 'biography-book-list':
         success_url = 'https://8000-claudiocruz-devbooks-zthg18alnnz.ws-eu77.gitpod.io/biography/'
     elif 'health-book-list':

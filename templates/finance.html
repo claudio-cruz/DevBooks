@@ -10,7 +10,7 @@
   </div>
 </div>
 
-<!-- Top books list -->
+<!-- Books list -->
 <div class="row container-fluid">
   <div class="col-lg-8 mx-auto">
 
@@ -19,7 +19,7 @@
     <ul class="list-group shadow">
 
       {% for book in book_list %}
-
+      {% if book.status %}
       <!-- Book list -->
       <span class="border border-dark book-list">
         <li class="list-group-item" id="{{ book.slug }}">
@@ -37,7 +37,6 @@
                 <div class="row content-md m-0">
 
                   <!-- Like Button -->
-
                   <strong class="likes">
                     {% if user.is_authenticated %}
                     <form class="d-inline" action="{% url 'book_like' book.slug %}" method="POST">
@@ -100,9 +99,10 @@
                             </span> wrote:
                           </p>
                           <!-- Comment body -->
-                          <p>{{ comment.body | linebreaks }}
+                          <p>{{ comment.body | linebreaks }}</p>
 
-                            {% if request.user.username == comment.name %}
+                          <!-- Edite and Delete Buttons -->
+                          {% if request.user.username == comment.name %}
                           <div class="row container">
                             <div class="col-5">
                               <a class="btn btn-primary btn-sm" href="/edit/{{ comment.id }}">Edit</a>
@@ -136,9 +136,9 @@
             </div>
             <!-- Book Image -->
             {% if "placeholder" in book.featured_image.url %}
-            <img class="card-img-top"
+            <img class="ml-lg-5 order-1 order-lg-2 mx-auto d-block"
               src="https://res.cloudinary.com/djmk0qtgj/image/upload/v1668793432/standard_book_cover_sby567.jpg"
-              alt="{{ book.title }}" width="200" class="ml-lg-5 order-1 order-lg-2 mx-auto d-block">
+              alt="{{ book.title }}" width="200">
             {% else %}
             <img src="{{ book.featured_image.url }}" alt="{{ book.title }}" width="200"
               class="ml-lg-5 order-1 order-lg-2 mx-auto d-block">
@@ -146,9 +146,10 @@
           </div>
         </li>
       </span>
+      {% endif %}
       {% endfor %}
 
-    </ul> <!-- End -->
+    </ul>
   </div>
 </div>
 {% endblock %}
