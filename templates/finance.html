@@ -65,7 +65,7 @@
                   <!-- Book Comments -->
                   {% with book.comments.count as total_comments %}
                   <div>
-                    <div class="card" id="headingOne">
+                    <div class="card" id="heading{{ comment.id }}">
                       <h5 class="mb-0">
                         <button class="btn" data-toggle="collapse" data-target="#collapse{{ book.title }}"
                           aria-expanded="false" aria-controls="collapse{{ book.title }}">

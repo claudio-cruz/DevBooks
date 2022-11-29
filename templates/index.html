@@ -38,7 +38,9 @@
         </button>
         <ul class="dropdown-menu">
           {% for book in book_list %}
+          {% if book.status %}
           <li><a class="dropdown-item" href="#{{ book.slug }}">{{ book.title }}</a></li>
+          {% endif %}
           {% endfor %}
         </ul>
       </div>
