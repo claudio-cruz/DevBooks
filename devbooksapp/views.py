@@ -4,6 +4,7 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Book, Category, Comment
 from .forms import CommentForm
+from django.contrib import messages
 
 
 
@@ -78,19 +79,11 @@ class CommentBookList(CreateView):
     
     model = Comment
     form_class = CommentForm
-
-    if 'finance-book-list':
-        success_url = 'https://8000-claudiocruz-devbooks-zthg18alnnz.ws-eu77.gitpod.io/finance/'
-    elif 'biography-book-list':
-        success_url = 'https://8000-claudiocruz-devbooks-zthg18alnnz.ws-eu77.gitpod.io/biography/'
-    elif 'health-book-list':
-        success_url = 'https://8000-claudiocruz-devbooks-zthg18alnnz.ws-eu77.gitpod.io/health/'
-    elif 'spiritual-book-list':
-        success_url = 'https://8000-claudiocruz-devbooks-zthg18alnnz.ws-eu77.gitpod.io/spiritual/'
-    elif 'leadership-book-list':
-        success_url = 'https://8000-claudiocruz-devbooks-zthg18alnnz.ws-eu77.gitpod.io/leadership/'
+    
+    if Book.category is 'finance':
+        success_url = 'https://8000-claudiocruz-devbooks-gemvbskfs0w.ws-eu77.gitpod.io/finance/'
     else:
-        success_url = 'https://8000-claudiocruz-devbooks-zthg18alnnz.ws-eu77.gitpod.io'
+        success_url = 'https://8000-claudiocruz-devbooks-gemvbskfs0w.ws-eu77.gitpod.io/'
     
 
     def form_valid(self, form):
@@ -98,6 +91,7 @@ class CommentBookList(CreateView):
         book = get_object_or_404(Book, id=self.kwargs['pk'])
         form.instance.book = book
         form.save()
+        
         return super().form_valid(form)
 
 
@@ -105,6 +99,7 @@ def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     if request.user.username == comment.name:
         comment.delete()
+        messages.warning(request, 'Your massege has been deleted!')
     
     if 'finance-book-list':
         return redirect('finance-book-list')
@@ -127,8 +122,10 @@ class BookLike(View):
         book = get_object_or_404(Book, slug=slug)
         if book.likes.filter(id=request.user.id).exists():
             book.likes.remove(request.user)
+            messages.success(request,'You successfully disliked the book!')
         else:
             book.likes.add(request.user)
+            messages.success(request, 'You successfully liked the book!')
 
         if 'finance-book-list':
             return redirect('finance-book-list')
@@ -150,6 +147,7 @@ def edit_comment(request, comment_id):
         form=CommentForm(request.POST, instance=comment_edit)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Your comment has been successfully edited!')
 
         if 'finance-book-list':
             return redirect('finance-book-list')
