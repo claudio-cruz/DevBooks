@@ -5,23 +5,26 @@ from django.http import HttpResponseRedirect
 from .models import Book, Category, Comment
 from .forms import CommentForm
 from django.contrib import messages
+from django.db.models import Count
 
-
-
-#def get_home_page(request):
-#    return render(request, 'index.html')
 
 class HomePage(generic.ListView):
-    queryset = Book.objects.order_by('title')
-    template_name = 'index.html'
+    queryset = Book.objects.annotate(like_count=Count('likes')).order_by('-like_count')
+    template_name = "index.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = Comment.objects.filter(approved=True).order_by('-created_on')
+        context['comment_form'] = CommentForm(self.request.POST)
+        return context
 
 class AboutUsPage(generic.ListView):
-    queryset = Book.objects.order_by('title')
+    queryset = Book
     template_name = 'aboutus.html'
 
 
 class FinanceBookList(generic.ListView):
-    queryset = Book.objects.order_by('title').filter(category=34)
+    queryset = Book.objects.annotate(like_count=Count('likes')).order_by('-like_count').filter(category=34)
     template_name = "finance.html"
 
     def get_context_data(self, **kwargs):
@@ -32,44 +35,44 @@ class FinanceBookList(generic.ListView):
 
 
 class BiographyBookList(generic.ListView):
-    queryset = Book.objects.order_by('title').filter(category=38)
+    queryset = Book.objects.annotate(like_count=Count('likes')).order_by('-like_count').filter(category=38)
     template_name = "biography.html"
 
-    def get_comment_data(self, **kwargs):
-        context = super().get_comment_data(**kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         context['comments'] = Comment.objects.filter(approved=True).order_by('-created_on')
         context['comment_form'] = CommentForm(self.request.GET)
         return context
 
 
 class HealthBookList(generic.ListView):
-    queryset = Book.objects.order_by('title').filter(category=36)
+    queryset = Book.objects.annotate(like_count=Count('likes')).order_by('-like_count').filter(category=36)
     template_name = "health.html"
 
-    def get_comment_data(self, **kwargs):
-        context = super().get_comment_data(**kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         context['comments'] = Comment.objects.filter(approved=True).order_by('-created_on')
         context['comment_form'] = CommentForm(self.request.GET)
         return context
 
 
 class SpiritualBookList(generic.ListView):
-    queryset = Book.objects.order_by('title').filter(category=35)
+    queryset = Book.objects.annotate(like_count=Count('likes')).order_by('-like_count').filter(category=35)
     template_name = "spiritual.html"
 
-    def get_comment_data(self, **kwargs):
-        context = super().get_comment_data(**kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         context['comments'] = Comment.objects.filter(approved=True).order_by('-created_on')
         context['comment_form'] = CommentForm(self.request.GET)
         return context
     
 
 class LeadershipBookList(generic.ListView):
-    queryset = Book.objects.order_by('title').filter(category=37)
+    queryset = Book.objects.annotate(like_count=Count('likes')).order_by('-like_count').filter(category=37)
     template_name = "leadership.html"
 
-    def get_comment_data(self, **kwargs):
-        context = super().get_comment_data(**kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         context['comments'] = Comment.objects.filter(approved=True).order_by('-created_on')
         context['comment_form'] = CommentForm(self.request.GET)
         return context
@@ -112,7 +115,7 @@ def delete_comment(request, comment_id):
     elif 'leadership-book-list':
         return redirect('leadership-book-list')
     else:
-        return redirect('get_home_page')
+        return redirect('home_page')
 
 
 class BookLike(View):
@@ -138,7 +141,7 @@ class BookLike(View):
         elif 'leadership-book-list':
             return redirect('leadership-book-list')
         else:
-            return redirect('get_home_page')
+            return redirect('home_page')
 
 
 def edit_comment(request, comment_id):
@@ -160,7 +163,7 @@ def edit_comment(request, comment_id):
         elif 'leadership-book-list':
             return redirect('leadership-book-list')
         else:
-            return redirect('get_home_page')
+            return redirect('home_page')
 
 
     form = CommentForm(instance=comment_edit)
