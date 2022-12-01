@@ -6,50 +6,27 @@
 <section class="vh-100 gradient-custom">
     <div class="container py-5 h-0">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            
-                <div class="card bg-dark text-white card-radius">
-                    <div class="card-body p-5 text-center" id="about-us-text">
 
-                        <h2 class="fw-bold mb-2 text-uppercase">About Us</h2>
+            <div class="card bg-dark text-white card-radius">
+                <div class="card-body p-5 text-center" id="about-us-text">
 
-                        <!-- About us test -->
-                        <p><br>DevBooks is a platform where you who love books, in particular self-development books,
-                            can find the books
-                            that you are looking for to read next.
+                    <h2 class="fw-bold mb-2 text-uppercase">About Us</h2>
 
-                            This platform was made for you to find the books you like, buy them, read them, comment
-                            on them, and like
-                            them. You can read the comments of other readers and find out more about the particular
-                            books you are
-                            interested in before you buy and read them.
+                    <!-- About us test -->
+                    <p><br>DevBooks is a platform where you who love books, in particular self-development books,
+                        can find the books
+                        that you are looking for to read next.
 
-                            We hope you find the book you are looking for here with us. Enjoy your reads.
-                        </p>
-                        
-                        <!-- Feedback form -->
-                        {% if user.is_authenticated %}
-                        <div class="container col-12 col-md-8 col-lg-6 col-xl-5">
-                            <form method="post" class="feedback-form">
-                                {% csrf_token %}
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="name@example.com">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlTextarea1" class="form-label">Give us you feedback</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"
-                                    placeholder="Write your feedback here..." rows="3"></textarea>
-                                </div>
-                                <button class="btn btn-signup right" id="sign-in-btn" type="#">Submit</button>
-                            </form>
-                        </div>
-                        {% endif %}
+                        This platform was made for you to find the books you like, buy them, read them, comment
+                        on them, and like
+                        them. You can read the comments of other readers and find out more about the particular
+                        books you are
+                        interested in before you buy and read them.
 
-
-                    </div>
+                        We hope you find the book you are looking for here with us. Enjoy your reads.
+                    </p>
                 </div>
-            
+            </div>
         </div>
     </div>
 </section>
