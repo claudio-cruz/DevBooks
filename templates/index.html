@@ -117,6 +117,7 @@
                       aria-labelledby="heading{{ book.title }}" data-parent="#accordion">
                       <div class="card-body">
 
+                        <!-- Comment Form -->
                         {% if user.is_authenticated %}
                         <form class="blueForms" method="post" action="{% url 'comment' book.id %}">
                           {% csrf_token %}

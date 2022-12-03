@@ -103,7 +103,6 @@ class CommentBookList(CreateView):
         book = get_object_or_404(Book, id=self.kwargs['pk'])
         form.instance.book = book
         form.save()
-        #messages.success(request, 'Your comment has been submited!')
         return super().form_valid(form)
 
 
