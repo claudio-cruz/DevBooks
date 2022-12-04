@@ -74,3 +74,32 @@ Webpage scheme
 
 Database scheme
 ![](/static/images/database_scheme.png)
+
+This website is structured as follows:
+* Home page with a fixed navigation bar at the top, a search dropdown list, a list of all the books, and a footer
+* Five category pages (finance, spiritual, health, leadership, and biographies) filtering the book list by categories
+* About us page, with information about the website's goals and purpose
+* Login and Logout pages for logging in and out
+* Register page to create an account
+
+### **Skeleton**
+
+The skeleton of the website has changed since the initial draws. Originally, it was intended to be a simple home page with a tipping search bar where users could write and navigate to specific categories and books. During the website's development, I changed that to a list display of all the books ordered by the number of user likes. with two dropdown lists on the top of the book lists, one with the categories and the other with the books, making a better user experience.
+
+The category pages were originally planned to have a top book list ranked by the admin, but with the development of the website, I decided to rank the books by the number of user likes so that users make the ranks and not the admin.
+
+Both the login, logout, and registration pages are very similar, with a container in the middle of the page with the same sign just changing the content inside that container to create a better user experience.
+
+### **Surface**
+
+To avoid confusing users, I try to keep the website as simple as possible, with as few sections, buttons, and texts. Because users require high contrast and light colors for a better user experience, I used high color contrast and light colors.
+
+For easy navigation, all the pages have a "go to top" button, reducing the scroling up and down. Also,  the book comment section has a dropdown button with all the user approved comments for a particular book and a go to the top of the comments button at the bottom of the comments.
+
+I will go more in depth about this in the features section.
+
+## **Features**
+---
+### *Navbar*
+
+[Wireframes](/static/documents/nav_bars.pdf)
