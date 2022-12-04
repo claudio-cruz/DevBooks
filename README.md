@@ -103,3 +103,49 @@ I will go more in depth about this in the features section.
 ### *Navbar*
 
 [Wireframes](/static/documents/nav_bars.pdf)
+
+This website has a fixed navigation bar at the top containing the DevBooks logo, and the home button, both of which redirect users to the home page when clicked. It also has a categories dropdown button with the five categories available (finance, spiritual, health, leadership, and biographies), each of those category buttons redirects users to the respective category pages. After the categories button is the "About Us" button that redirects users to the About Us page, where users can find information about the webpage.
+
+The navigation bar changes depending on whether the user is logged in or out.If users are logged in, a logout button appears in the navigation bar; if users are logged out, a login and register button appears in the navigation bar.
+
+The navbar is responsive; it works with small screens, as shown in the wireframe above.
+
+### *Drop-down searching menu*
+
+![](/static/images/search_bar.png)
+
+The drop-down search menu has two options: the drop-down category menu, which redirects users to the specific category page when clicked, and the drop-down book menu, which redirects users to the specific book they select when clicked.
+
+### *Book list on each page*
+
+![](/static/images/book_list.png)
+
+The book lists on the home page and the category pages are ordered by the number of users who have liked them. Each book has a specific book title, book image, book description, and on the bottom of the book description, users can see the number of likes and comments that that specific book has. Users can also like or dislike the book by clicking on the heart logo, buy the book by clicking on the "Buy Book" button, and see the book comments in the dropdown button. If users are logged in, they can also add comments (upon admin approval of each comment) and edit or delete their own comments.
+
+### *Footer*
+
+![](/static/images/footer.png)
+
+A simple footer with the social media links, all the external links open in the diferent window.
+
+### *Login, Logout, and Register*
+
+[Wireframes](/static/documents/login_out_register.pdf)
+
+* On the Register page, users have a form with the following fields: Username, E-mail (optional), Password, and Password confirmation
+* On the login page users can login with their login data that they created on the registration page. Users can choose to "remember me" so that they don't have to enter their user name and password again the next time they login. On the botton of the form, users have a "sign up" option if they haven't created a login yet
+* The Logout page is straightforward; users are asked if they are certain they want to log out
+* All these actions have an allert message every time a user logs in, logs out and registers
+
+### *Comments*
+
+![](/static/images/comments.png)
+
+Users can access the comments by clicking on the comments dropdown button. If users are logged in, they can see an Add Comment form so that they can add a comment to that particular book. Users can also view a list of approved comments, as well as information about who submitted them and when they were written. For the comments written by the comment author, it shows two buttons under that user's comments: Edit and Delete buttons to edit and delete the comment. On the bottom of all comments, users have a "Back to top" button to go back to the top of the comments.
+
+### *Edit Comments*
+
+![](/static/images/edit_comment.png)
+![](/static/images/edit_comment_modal.png)
+
+When users click on the "edit" button, the edit comment form shows up and looks like the image above. It has a body field so that users can edit their comment. After editing the comment, users click on the "edit comment" button, and it will show a confirmation modal asking users if they want to edit the comment. If they confirm the comment is edited, the comment will be published.
