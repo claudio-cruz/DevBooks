@@ -21,7 +21,7 @@
       {% for book in book_list %}
       {% if book.status %}
       <!-- Book list -->
-      <span class="border border-dark book-list">
+      <div class="border border-dark book-list">
         <li class="list-group-item" id="{{ book.slug }}">
           <!-- Custom content-->
           <div class="media align-items-lg-center flex-column flex-lg-row p-3">
@@ -143,7 +143,7 @@
             {% endif %}
           </div>
         </li>
-      </span>
+      </div>
       {% endif %}
       {% endfor %}
 
