@@ -12,6 +12,10 @@ The books are ranked from the most liked (at the top of the page) to the least l
 
 Our goal is for self-development book readers to easily find books that interest them, using an easy and intuitive platform with short but concise book descriptions, feedback back from other readers, and a list of filtered books by category that are ranked by reader likes from the top of the page to the bottom of the page. We also provide a "Buy Book" link that redirects users to the bookseller page so that they can buy the books they like.
 
+All the Agile processes and user stories can be found in the project section on GitHub. (It's set to public).
+
+This website has educational purposes only.
+
 This website is made up of the following sections:
 
 1. Home Page / contains a list of all books
@@ -195,14 +199,34 @@ The main technologies used are the following:
 
 The lighthouse results aren't all above 90 percent, but they are something I'm aware of and working on.
 
-### *HTML and CSS Validation*
+### *HTML, CSS, and JavaScript Validation*
 
 * The "W3C HTML Validator" found some errors in my HTML files, but only related to the Django tags.
 * The "W3C CSS Validator (Jigsaw)" found no errors in the CSS file.
+* The "JSHint JavaScript Validator" found no errors in the JavaScript file.
 
 ### *Bugs and fixes*
 
-* 
+* I attempted to add a modal to the comment delete button so that users could confirm the deletions, similar to the modal I used in the edit comment, but it gave me a bug, broke the page, and I had to refresh the page to resolve it. I tried different versions of the modal, but apparently Bootstrap modals don't work inside dropdown lists, so I had to remove the modal.
+* The alert messages work well, but if users thrigger to fast two messages before the page refresh, for exemple if users click two times to fast on like and dislike a book, the website shows the two alert messages at the same time, but just the first one desapear after two seconds, the second mesage dont desapear. This problem can be resolved by refreshing the page.
 
+---
+## Deployment
 
+I used Heroku to deploy the project:
+1. In settings.py set the DEBUG to False and add X_FRAME_OPTIONS = 'SAMEORIGIN'
+2. Commit final code on GitHub
+3. In Heroku Config Vars, delete the "DISABLE_COLLECTSTATIC"
+4. Select the deployment option and deploy the project
 
+---
+## Credits
+
+I used code from the following resources:
+* [Navbar](https://getbootstrap.com/docs/4.0/components/navbar/)
+* [Book List](https://freefrontend.com/bootstrap-lists/)
+* [Login, Logout, and Register](https://mdbootstrap.com/docs/standard/extended/login/)
+
+I used media frm:
+* [Background image](https://unsplash.com/)
+* Book cover images were taken from the books' webpages.
