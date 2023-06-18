@@ -96,7 +96,7 @@ class CommentBookList(CreateView):
     model = Comment
     form_class = CommentForm
 
-    success_url = 'https://8000-claudiocruz-devbooks-gemvbskfs0w.ws-eu77.gitpod.io/'
+    success_url = '/'
 
     def form_valid(self, form):
         form.instance.name = self.request.user.username
