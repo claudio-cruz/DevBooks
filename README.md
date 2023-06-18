@@ -213,11 +213,42 @@ The lighthouse results aren't all above 90 percent, but they are something I'm a
 ---
 ## Deployment
 
-I used Heroku to deploy the project:
-1. In settings.py set the DEBUG to False and add X_FRAME_OPTIONS = 'SAMEORIGIN'
-2. Commit final code on GitHub
-3. In Heroku Config Vars, delete the "DISABLE_COLLECTSTATIC"
-4. Select the deployment option and deploy the project
+* These are the steps for deploying the project to Heroku:
+1. Create a Heroku account (if you don't have one already)
+2. Create a Heroku app:
+3. Click “New”
+4. Click “Create new app”
+5. Give your app a name and select the region closest to you, then click “Create app”.
+6. Create a ElephantSQL.com account (if you don't have one already)
+7. Create a new database in ElephantSQL:
+8. Log in to ElephantSQL.com and click ”Create New Instance”
+9. Give your plan a Name
+10. Select the Tiny Turtle (Free) plan
+11. You can leave the Tags field blank
+12. Select “Select Region”
+13. Select a data center near you
+14. Then click “Review”
+15. Check if your details are correct and then click “Create instance”
+16. Return to the ElephantSQL dashboard and click on the database instance name for this project
+17. In the URL section, click the copy icon to copy the database URL
+18. Create an env.py file:
+19. Make sure that the file is at .gitignore file
+20. write “import os” on the top of the env.py
+21. Set a DATABASE_URL variable to the value you just copied from the ElephantSQL.com os.environ["DATABASE_URL"]="<copiedURL>"
+22. Add a SECRET_KEY (can be whatever you like) os.environ["SECRET_KEY"]="my_super^secret@key"
+23. In your settings file comment out the DATABASES and add the code beloew,
+![](/static/images/databaseexp.png)
+24. Save your file and run the migration command "python manage.py migrate"
+25. Go back to the Heroku dashboard open the Settings tab
+26. Add two config vars: "DATABASE_URL, and for the value, copy in your database URL from ElephantSQL, no need to add quotation marks." SECRET_KEY containing your secret key."
+27. Create a Cloudinary account at https://cloudinary.com/ (if you don't have one already)
+28. In Cloudinary Dasgbord, copy the API Environment variable and paste it on env.pu like this: "os.environ["CLOUDINARY_URL"] = "your Cloudinary URL" " (don't forget to remove the "CLOUDINARY_URL=" on the bigining of the API Environment variable that you just copied)
+29. Add the same value to heroku Config Vars exp "CLOUDINARY_URL" "the value you copied"
+30. Update the settings.py
+31. Create an "Procfile", in it write "web: gunicorn projectName.wsgi"
+32. On Heroku select your app that you created and click "Deploy"
+33. Connect your GitHub with Heroku, select the name of your project, scroll down, and select "Deploy Branch" and your project will be deployed to Heroku.
+
 
 ---
 ## Credits
