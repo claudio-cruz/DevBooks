@@ -244,7 +244,7 @@ The lighthouse results aren't all above 90 percent, but they are something I'm a
 27. Create a Cloudinary account at https://cloudinary.com/ (if you don't have one already)
 28. In Cloudinary Dasgbord, copy the API Environment variable and paste it on env.pu like this: "os.environ["CLOUDINARY_URL"] = "your Cloudinary URL" " (don't forget to remove the "CLOUDINARY_URL=" on the bigining of the API Environment variable that you just copied)
 29. Add the same value to heroku Config Vars exp "CLOUDINARY_URL" "the value you copied"
-30. Update the settings.py
+30. Update the settings.py and set the debug to False
 31. Create an "Procfile", in it write "web: gunicorn projectName.wsgi"
 32. On Heroku select your app that you created and click "Deploy"
 33. Connect your GitHub with Heroku, select the name of your project, scroll down, and select "Deploy Branch" and your project will be deployed to Heroku.
