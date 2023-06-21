@@ -177,9 +177,9 @@
             {% if "placeholder" in book.featured_image.url %}
             <img class="ml-lg-5 order-1 order-lg-2 mx-auto d-block"
               src="https://res.cloudinary.com/djmk0qtgj/image/upload/v1668793432/standard_book_cover_sby567.jpg"
-              alt="{{ book.title }}" width="200">
+              alt="{{ book.title }}" width="200" height="300">
             {% else %}
-            <img src="{{ book.featured_image.url }}" alt="{{ book.title }}" width="200"
+            <img src="{{ book.featured_image.url }}" alt="{{ book.title }}" width="200" height="300"
               class="ml-lg-5 order-1 order-lg-2 mx-auto d-block">
             {% endif %}
           </div>
