@@ -8,7 +8,7 @@ class CommentForm(forms.ModelForm):
     """Disply the book comment form."""
 
     body = forms.CharField(label='Comment:',
-        widget=forms.Textarea(attrs={'rows': 4}))
+        widget=forms.Textarea(attrs={'rows': 4, 'minlength': 10}))
 
     class Meta:
         """Provide aditional information about the Comment."""
