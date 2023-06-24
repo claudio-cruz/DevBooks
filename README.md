@@ -229,7 +229,7 @@ The main technologies used are the following:
 
 [Lighthouse](/static/documents/lighthouse.pdf)
 
-All the lighthouse results are above 90 in microsoft edge browser.
+The lighthouse results were improved.
 
 ### *HTML, CSS, and JavaScript Validation*
 
