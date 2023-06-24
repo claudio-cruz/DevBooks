@@ -146,7 +146,7 @@ def delete_comment(request, comment_id):
         comment.delete()
         messages.warning(request, 'Your comment has been deleted!')
 
-    return redirect('home_page')
+    return redirect(request.META.get('HTTP_REFERER'))
 
 
 class BookLike(View):
@@ -162,7 +162,7 @@ class BookLike(View):
             book.likes.add(request.user)
             messages.success(request, 'You successfully liked the book!')
 
-        return redirect('home_page')
+        return redirect(request.META.get('HTTP_REFERER'))
 
 
 def edit_comment(request, comment_id):
