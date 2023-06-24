@@ -1,6 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -35,10 +36,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link font-weight-bold" href="{% url 'home_page' %}">Home <span
-              class="sr-only">(current)</span></a>
+          <a class="nav-link font-weight-bold" href="{% url 'home_page' %}">Home</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item active dropdown">
           <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdown" role="button"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Categories
@@ -60,20 +60,20 @@
               Biographies</a>
           </div>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link font-weight-bold" href="{% url 'get_aboutus_page' %}">About Us</a>
         </li>
 
         {% if user.is_authenticated %}
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link font-weight-bold" href="{% url 'account_logout' %}">Logout</a>
         </li>
         {% else %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+        <li class="nav-item active">
+          <a class="nav-link font-weight-bold" href="{% url 'account_signup' %}">Register</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+        <li class="nav-item active">
+          <a class="nav-link font-weight-bold" href="{% url 'account_login' %}">Login</a>
         </li>
         {% endif %}
 
@@ -100,11 +100,34 @@
     <!-- Content goes here -->
     {% endblock content %}
   </main>
-
   <!-- Back to top Button -->
-  <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
+  <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top" aria-label="Back to top">
     <i class="fas fa-arrow-up"></i>
   </button>
+  
+  <!-- Footer -->
+  <footer class="text-center text-white mt-auto">
+    <!-- Facebook -->
+    <a class="btn btn-link btn-floating btn-lg text-dark" href="https://www.facebook.com/" target="_blank" role="button"
+      aria-label="Facebook link"><i class="fab fa-facebook-f"></i></a>
+
+    <!-- Twitter -->
+    <a class="btn btn-link btn-floating btn-lg text-dark" href="https://www.twitter.com" target="_blank" role="button"
+      aria-label="Twitter link"><i class="fab fa-twitter"></i></a>
+
+    <!-- Youtube -->
+    <a class="btn btn-link btn-floating btn-lg text-dark" href="https://www.youtube.com" target="_blank" role="button"
+      aria-label="Youtube link"><i class="fa-brands fa-youtube"></i></a>
+
+    <!-- Instagram -->
+    <a class="btn btn-link btn-floating btn-lg text-dark" href="https://www.instagram.com" target="_blank" role="button"
+      aria-label="Instagram link"><i class="fa-brands fa-square-instagram"></i></a>
+
+    <!-- Linkedin -->
+    <a class="btn btn-link btn-floating btn-lg text-dark" href="https://www.linkedin.com" target="_blank" role="button"
+      aria-label="Linkedin link"><i class="fab fa-linkedin"></i></a>
+  </footer>
+
 
   <script src="{% static 'js/script.js' %}"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -117,29 +140,7 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
 
-
 </body>
-<!-- Footer -->
-<footer class="text-center text-white mt-auto">
-  <!-- Facebook -->
-  <a class="btn btn-link btn-floating btn-lg text-dark" href="https://www.facebook.com/" target="_blank" role="button"
-    aria-label="Facebook link" data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
 
-  <!-- Twitter -->
-  <a class="btn btn-link btn-floating btn-lg text-dark" href="https://www.twitter.com" target="_blank" role="button"
-    aria-label="Twitter link" data-mdb-ripple-color="dark"><i class="fab fa-twitter"></i></a>
-
-  <!-- Youtube -->
-  <a class="btn btn-link btn-floating btn-lg text-dark" href="https://www.youtube.com" target="_blank" role="button"
-    aria-label="Youtube link" data-mdb-ripple-color="dark"><i class="fa-brands fa-youtube"></i></a>
-
-  <!-- Instagram -->
-  <a class="btn btn-link btn-floating btn-lg text-dark" href="https://www.instagram.com" target="_blank" role="button"
-    aria-label="Instagram link" data-mdb-ripple-color="dark"><i class="fa-brands fa-square-instagram"></i></a>
-
-  <!-- Linkedin -->
-  <a class="btn btn-link btn-floating btn-lg text-dark" href="https://www.linkedin.com" target="_blank" role="button"
-    aria-label="Linkedin link" data-mdb-ripple-color="dark"><i class="fab fa-linkedin"></i></a>
-</footer>
 
 </html>

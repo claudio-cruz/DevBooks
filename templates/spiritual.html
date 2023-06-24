@@ -16,18 +16,18 @@
 
 
     <!-- List group -->
-    <ul class="list-group shadow">
 
-      {% for book in book_list %}
-      {% if book.status %}
-      <!-- Book list -->
-      <div class="border border-dark book-list">
+    {% for book in book_list %}
+    {% if book.status %}
+    <!-- Book list -->
+    <div class="border border-dark book-list">
+      <ul class="list-group shadow">
         <li class="list-group-item" id="{{ book.slug }}">
           <!-- Custom content-->
           <div class="media align-items-lg-center flex-column flex-lg-row p-3">
             <div class="media-body order-2 order-lg-1">
               <!-- Book Title -->
-              <h3 class="mt-0 font-weight-bold mb-2 text-center">{{ book.title }}</h3>
+              <h2 class="mt-0 font-weight-bold mb-2 text-center">{{ book.title }}</h2>
               <p class="font-italic text-muted mb-0 small">
                 <!-- Book Description -->
                 {{ book.content | safe }}
@@ -42,15 +42,17 @@
                     <form class="d-inline" action="{% url 'book_like' book.slug %}" method="POST">
                       {% csrf_token %}
                       {% if liked %}
-                      <button type="submit" name="blogbook_id" value="{{book.slug}}" class="btn-like">
+                      <button type="submit" name="book_id" value="{{book.slug}}" class="btn-like"
+                        aria-label="Dislike button">
                         <i class="fa-solid fa-heart"></i></button>
                       {% else %}
-                      <button type="submit" name="blogbook_id" value="{{book.slug}}" class="btn-like">
+                      <button type="submit" name="book_id" value="{{book.slug}}" class="btn-like"
+                        aria-label="Like button">
                         <i class="fa-regular fa-heart"></i></button>
                       {% endif %}
                     </form>
                     {% else %}
-                    <span class="text-secondary"><i class="far fa-heart"></i></span>
+                    <span class="text-secondary"><i class="fa-solid fa-heart"></i></span>
                     {% endif %}
                     <!-- Number of likes -->
                     <span class="text-secondary">{{ book.number_of_likes }} </span>
@@ -58,7 +60,7 @@
 
 
                   <!-- Buy Book Button -->
-                  <div type="button" class="btn-sm"><a href="{{ book.buy_button }}" class="btn btn-info" role="button"
+                  <div type="button" class="btn-sm"><a href="{{ book.buy_button }}" class="btn btn-dark" role="button"
                       target="_blank">Buy Book</a></div>
 
 
@@ -66,12 +68,12 @@
                   {% with book.comments.count as total_comments %}
                   <div>
                     <div class="card" id="headingOne">
-                      <h5 class="mb-0">
+                      <p class="mb-0">
                         <button class="btn" data-toggle="collapse" data-target="#collapse{{ book.title }}"
                           aria-expanded="false" aria-controls="collapse{{ book.title }}">
                           <i class="fa-regular fa-comment"></i> {{ total_comments }} Comments
                         </button>
-                      </h5>
+                      </p>
                     </div>
                     {% endwith %}
 
@@ -146,11 +148,11 @@
             {% endif %}
           </div>
         </li>
-      </div>
-      {% endif %}
-      {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    {% endfor %}
 
-    </ul>
   </div>
 </div>
 {% endblock %}
