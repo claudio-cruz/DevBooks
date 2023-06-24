@@ -4,13 +4,17 @@
 
 ![](/static/images/devbooks_views.png)
 
-DevBooks is a platform where readers can find the best self-development books on the market, ranked and evaluated by other readers.
+Welcome to DevBooks, the ultimate platform for discovering top self-development books! Our site offers a comprehensive collection of the best books in this genre, evaluated and ranked by fellow readers.
 
-Readers can express their thoughts on the books they have read, read other readers' thoughts about books they are interested, and make a decision whether to read that book or not.
+Here at DevBooks, we empower readers to share their thoughts and opinions on the books they've read. By accessing user reviews, individuals can gather valuable insights and make informed decisions about their next reading choices. Our platform encourages an interactive community where readers can engage with each other's perspectives, fostering a vibrant and informed literary environment.
 
-The books are ranked from the most liked (at the top of the page) to the least liked (at the bottom of the page). We also provide book categories so that users who are more interested in specific genres can filter books by the category.
+To ensure an effortless browsing experience, our books are thoughtfully categorized, enabling users to filter their search based on specific genres. This feature allows readers with particular interests to explore books tailored to their preferences.
 
-Our goal is for self-development book readers to easily find books that interest them, using an easy and intuitive platform with short but concise book descriptions, feedback back from other readers, and a list of filtered books by category that are ranked by reader likes from the top of the page to the bottom of the page. We also provide a "Buy Book" link that redirects users to the bookseller page so that they can buy the books they like.
+Our primary aim is to connect self-development book enthusiasts with their next great read. With concise yet informative book descriptions, user feedback, and a meticulously ranked list of books by reader likes, finding compelling titles has never been easier. Additionally, we provide a convenient "Buy Book" link that directly redirects users to the respective bookseller page, simplifying the purchase process for those who have found their ideal book.
+
+In addition to the reader-focused features, we have equipped the site with an administrative interface. Site admins have the authority to add new books to our ever-growing collection, update existing book information, as well as approve and delete user comments. This ensures the platform remains up-to-date and maintains a high standard of quality content.
+
+At DevBooks, we strive to create an intuitive and user-friendly experience for all self-development book enthusiasts. Join our community today and embark on a journey of personal growth through the power of literature!
 
 All the Agile processes and user stories can be found in the project section on GitHub. (It's set to public).
 
@@ -171,39 +175,68 @@ The main technologies used are the following:
 ## Testing
 
 ### *Manual testing*
-1. All internal links work properly.
-2. All external links work properly and open in another window.
-3. The "Go to the top of the page" button brings users to the top of the page and only shows up when users scroll down the page.
-4. The Category and Books dropdown search bar redirect users the the correct Category page or Book.
-5. The book lists are correctly displayed and ordered by the number of likes on each page.
-6. The like and dislike buttons work and show the number of likes for each book.
-7. The "Buy Book" button redirects the users to the bookseller page in an external window.
-8. The comment dropdown button shows the correct number of comments on each book and when clicked shows the comments of the selected book.
-9. In the comment dropdown, if users are authenticated, it shows the add comment form, and users can add comments to the books correctly.
-10. Only comments approved by the admin are displayed in the comments list.
-11. If authenticated, users can edit or delete their own comments.
-12. Each time a comment is added, edited, and or deleted, users get a confirmation alert message that dissipates within two seconds.
-13. The "Back to top" link at the bottom of the comments list correctly returns users to the top of the comments.
-14. When a book is added to the list, if it has no Cloudinary image, a placeholder image is added by default.
-15. Login works properly, and when a user logs in, a success allert message appears.
-16. Logout works properly, and when a user logs out, a success allert message appears.
-17. User Registration works correctly, and when a user registers, it shows a success allert message.
-18. If users are logged out, the navbar only shows the login and registration options.
-19. If users are logged in, the navbar only shows the logout option.
-20. The navbar changes to a hamburger button menu with less the 990px screen size.
-21. The website is totaly responsive to the different screen sizes and all its main functions work properly in the different sizes.
 
+1. Navbar:
+- [x] The logo, home, about us, register, log in, and log out navigation links work correctly.
+- [x] The category dropdown menu works correctly.
+- [x] The category links in the category drop-down work correctly.
+- [x] The navbar is responsive to all screen sizes.
+- [x] The burguer menu tuggle works correctly, and all the abave links work.
+- [x] The navbar shows correctly the log in and register links when users aren't authenticated.
+- [x] The navbar shows the log out link correctly when users are authenticated.
+
+2. Home Page:
+- [x] The category dropdown filter displays all the category links correctly with the respected category icons.
+- [x] The category links in the dropdown filter work.
+- [x] The book dropdown filter displays all the book links correctly.
+- [x] The book links in the dropdown book filter redirect users to the book they click on.
+- [x] All books are displayed on the main page as a list, and it is responsive to all screen sizes.
+- [x] The same buton works in each of the books.
+- [x] The book-like count works correctly.
+- [x] The buy button works correctly and redirects the users to another site on another webpage to buy the book.
+- [x] The comments dropdown button works correctly and displays a list of the approved comments for each book.
+- [x] The comment form is displayed for authentication users.
+- [x] the comment form handles empty comment submitions
+- [x] The comment form will submit successful comments and display an error message that says the comment is waiting for admin approval.
+- [x] Each comment has the user comment owner, the date that the comment was created, and the correct comment.
+- [x] If the user is authenticated and the owner of the comment, two buttons are displayed under the comment (delete and edit) correctly.
+- [x] The comment edit works correctly and displays an alert message when a comment is edited successfully.
+- [x] The comment deletion works correctly and displays an alert message when a comment is successfully deleted.
+- [x] In the comments list, users have a 'Back to Top button, which redirects them to the top of the comments.
+- [x] The 'go back to top' button in the right-down corner displays correctly after users scroll down the page and successfully redirects users to the top of the page when clicked.
+- [x] The footer links work correctly and open the respective links in a new tab.
+- [x] The home page is responsive to all screen sizes.
+
+3. Log in and log out forms:
+- [x] The log-in form handles incorrect or empty inputs correctly.
+- [x] When the user log-in values are correct, the user is correctly logged in and redirected to the home page with a successful allergy message.
+- [x] The link to the sign-up form under the login form redirects the user to the sign-up form correctly.
+- [x] The logout page display correctly the question if the user wants to log out and duspley the user name correctly.
+- [x] When the logged out button is clicked the user is logged out succesfully, redirected to the home page with a succesful alert message.
+- [x] The forms are responsive to all screen sizes.
+
+4. Sign up form:
+- [x] The sign-up form correctly handles empty inputs, displaying a message telling users not to leave empty fields, with the exception of the email input field because that field is optional.
+- [x] New users can successfully create an account, being redirected to the home page with a successful login message.
+
+5. Book category pages:
+- [x] The five category pages (Finance, Spirituality, Health, Leadership, and Biographies) display the books correctly by category with the exact same style as the home page book list.
+- [x] All functionalities mentioned on the home page work correctly on the five different category pages.
+- [x] When users like a book or submit a comment on one of these five category pages, they are redirected to the page they are on.
+
+---
 ### *Lighthouse*
 
 [Lighthouse](/static/documents/lighthouse.pdf)
 
-The lighthouse results aren't all above 90 percent, but they are something I'm aware of and working on.
+All the lighthouse results are above 90 in microsoft edge browser.
 
 ### *HTML, CSS, and JavaScript Validation*
 
 * The "W3C HTML Validator" found some errors in my HTML files, but only related to the Django tags.
 * The "W3C CSS Validator (Jigsaw)" found no errors in the CSS file.
 * The "JSHint JavaScript Validator" found no errors in the JavaScript file.
+* There is no python PEP8 erros.
 
 ### *Bugs and fixes*
 
