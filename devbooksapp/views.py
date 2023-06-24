@@ -120,6 +120,8 @@ class LeadershipBookList(generic.ListView):
         return context
 
 
+from django.contrib import messages
+
 class CommentBookList(CreateView):
     """View for creating a new comment on a book."""
 
@@ -134,15 +136,15 @@ class CommentBookList(CreateView):
         book = get_object_or_404(Book, id=self.kwargs['pk'])
         form.instance.book = book
         form.save()
+        messages.success(self.request, 'Your comment is waiting for approval!')
         return super().form_valid(form)
-
 
 def delete_comment(request, comment_id):
     """Delete a comment and display a success message."""
     comment = get_object_or_404(Comment, id=comment_id)
     if request.user.username == comment.name:
         comment.delete()
-        messages.warning(request, 'Your massege has been deleted!')
+        messages.warning(request, 'Your comment has been deleted!')
 
     return redirect('home_page')
 
